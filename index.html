@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>基本電學 Ch1–Ch2 重點</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: 一欄式讀書筆記，淡方格紙底；每小節一張表，公式用等寬字卡片 */
+:root {
+  --bg: #f5f8f9;
+  --paper: #ffffff;
+  --grid: #e3ecef;
+  --fg: #17262c;
+  --muted: #56686f;
+  --line: #d2dde1;
+  --teal: #11808f;
+  --teal-soft: #e0f1f3;
+  --ch1: #d9860a;
+  --ch2: #3f9a2c;
+  --warn: #c2412d;
+  --warn-soft: #fbe9e5;
+  --hl: #fff2b8;
+  --sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0f1719; --paper: #162124; --grid: #1b282b; --fg: #e3eced; --muted: #93a6ab; --line: #2a3a3e;
+  --teal: #4fc1cf; --teal-soft: #173338; --ch1: #f0a53a; --ch2: #74c75f; --warn: #ff8a73; --warn-soft: #3a211c; --hl: #4a4115;
+  color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0f1719; --paper: #162124; --grid: #1b282b; --fg: #e3eced; --muted: #93a6ab; --line: #2a3a3e;
+  --teal: #4fc1cf; --teal-soft: #173338; --ch1: #f0a53a; --ch2: #74c75f; --warn: #ff8a73; --warn-soft: #3a211c; --hl: #4a4115;
+  color-scheme: dark }
+
+* { box-sizing: border-box; }
+body {
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  padding-inline: 16px;
+  padding-block: 28px 64px;
+}
+.wrap { max-width: 900px; margin: 0 auto; display: grid; gap: 28px; }
+
+header.top { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 22px 24px; display: grid; gap: 10px; }
+header.top .eyebrow { font-size: 13px; letter-spacing: .12em; color: var(--teal); font-weight: 700; }
+header.top h1 { margin: 0; font-size: clamp(26px, 5vw, 36px); font-weight: 900; line-height: 1.25; text-wrap: balance; }
+header.top p { margin: 0; color: var(--muted); }
+nav.toc { display: flex; flex-wrap: wrap; gap: 8px; }
+nav.toc a { font-size: 14px; text-decoration: none; color: var(--fg); border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; background: var(--bg); }
+nav.toc a:hover, nav.toc a:focus-visible { border-color: var(--teal); color: var(--teal); outline: none; }
+nav.toc a.c1 { border-left: 4px solid var(--ch1); }
+nav.toc a.c2 { border-left: 4px solid var(--ch2); }
+
+.chapter { display: flex; align-items: baseline; gap: 14px; margin-top: 12px; padding-bottom: 8px; border-bottom: 2px dashed var(--line); }
+.chapter .num { font-family: var(--mono); font-size: 44px; font-weight: 700; line-height: 1; }
+.chapter.c1 .num { color: var(--ch1); }
+.chapter.c2 .num { color: var(--ch2); }
+.chapter h2 { margin: 0; font-size: 28px; font-weight: 900; }
+
+section.sec { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; display: grid; gap: 14px; min-width: 0; scroll-margin-top: 16px; }
+section.sec h3 { margin: 0; font-size: 20px; font-weight: 700; display: flex; gap: 10px; align-items: baseline; }
+section.sec h3 .id { font-family: var(--mono); font-size: 15px; color: var(--teal); background: var(--teal-soft); border-radius: 6px; padding: 1px 8px; }
+
+.tbl { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+th { font-size: 13px; letter-spacing: .06em; color: var(--muted); font-weight: 700; background: var(--bg); }
+td:first-child { font-weight: 700; white-space: nowrap; }
+tr:last-child td { border-bottom: none; }
+
+.f { font-family: var(--mono); font-weight: 500; }
+ruby { ruby-position: over; ruby-align: center; margin-inline: 1px; }
+rt { font-family: var(--sans); font-size: 11px; font-weight: 700; color: var(--teal); letter-spacing: 0; line-height: 1.2; }
+td .f, td.f { line-height: 2.3; }
+.formulas { display: flex; flex-wrap: wrap; gap: 10px; }
+.formulas .f { background: var(--teal-soft); color: var(--fg); border-radius: 8px; padding: 12px 12px 6px; font-size: 16px; line-height: 2.1; }
+.formulas .f rt { color: var(--teal); }
+mark { background: var(--hl); color: inherit; padding: 0 3px; border-radius: 3px; }
+
+.note { border-radius: 10px; padding: 10px 14px; font-size: 15px; display: grid; gap: 4px; }
+.note b.tag { font-size: 13px; letter-spacing: .08em; }
+.note.warn { background: var(--warn-soft); }
+.note.warn b.tag { color: var(--warn); }
+.note.ex { background: var(--bg); border: 1px dashed var(--line); }
+.note.ex b.tag { color: var(--teal); }
+.note p { margin: 0; }
+ul.pts { margin: 0; padding-left: 1.2em; display: grid; gap: 4px; }
+
+/* 色碼 */
+.bands { display: grid; grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: 6px; }
+.band { border-radius: 8px; border: 1px solid var(--line); overflow: hidden; font-size: 13px; text-align: center; }
+.band .sw { height: 26px; }
+.band .lb { padding: 3px 2px; line-height: 1.35; }
+.band .lb b { font-family: var(--mono); font-size: 15px; }
+
+.calc { display: grid; gap: 12px; border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+.calc .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; }
+.calc label { display: grid; gap: 2px; font-size: 13px; color: var(--muted); }
+.calc select { font: inherit; font-size: 15px; padding: 4px 8px; border-radius: 6px; border: 1px solid var(--line); background: var(--paper); color: var(--fg); }
+.calc select:focus-visible { outline: 2px solid var(--teal); outline-offset: 1px; }
+.resistor { height: 40px; display: flex; align-items: center; }
+.resistor .lead { flex: 1; height: 3px; background: var(--muted); }
+.resistor .body { width: 180px; max-width: 60%; height: 36px; border-radius: 16px; background: #d9c39a; display: flex; justify-content: space-evenly; align-items: stretch; padding: 0 14px; }
+.resistor .body span { width: 12px; }
+.resistor .body span:last-child { margin-left: 18px; }
+.calc .out { font-family: var(--mono); font-size: 20px; font-weight: 700; color: var(--teal); }
+
+footer { color: var(--muted); font-size: 13px; text-align: center; }
+@media (max-width: 520px) {
+  section.sec { padding: 16px 14px; }
+  th, td { padding: 7px 7px; }
+  td:first-child { white-space: normal; }
+}
+</style>
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header class="top">
+  <div class="eyebrow">高職一年級 · 基本電學（上）· 第一次段考</div>
+  <h1>第一章 電學概論 ＋ 第二章 電阻 重點整理</h1>
+  <p>先看每節的公式卡，再看表格；公式裡每個代號上方都標了中文名稱。紅色框是常考陷阱，虛線框是例題。</p>
+  <nav class="toc" aria-label="目錄">
+    <a class="c1" href="#s1-1">1-1 特性應用</a><a class="c1" href="#s1-2">1-2 單位</a><a class="c1" href="#s1-3">1-3 電能</a><a class="c1" href="#s1-4">1-4 電荷</a><a class="c1" href="#s1-5">1-5 電壓</a><a class="c1" href="#s1-6">1-6 電流</a><a class="c1" href="#s1-7">1-7 電功率</a>
+    <a class="c2" href="#s2-1">2-1 電阻電導</a><a class="c2" href="#s2-2">2-2 電阻器</a><a class="c2" href="#s2-3">2-3 歐姆定律</a><a class="c2" href="#s2-4">2-4 溫度係數</a>
+    <a href="#sum">公式總表</a>
+  </nav>
+</header>
+
+<!-- ========== 第一章 ========== -->
+<div class="chapter c1"><span class="num">01</span><h2>電學概論</h2></div>
+
+<section class="sec" id="s1-1">
+  <h3><span class="id">1-1</span>電的特性及應用</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>電的效應</th><th>說明</th><th>應用例子</th></tr></thead>
+    <tbody>
+      <tr><td>熱效應</td><td>電流流過電阻產生熱（焦耳定律）</td><td>電熱水器、電鍋、吹風機、保險絲</td></tr>
+      <tr><td>磁效應</td><td>電流周圍產生磁場</td><td>電動機（馬達）、電磁鐵、繼電器、喇叭</td></tr>
+      <tr><td>化學效應</td><td>電流使物質發生化學變化</td><td>電解、電鍍、充電電池</td></tr>
+      <tr><td>光效應</td><td>電能轉換成光</td><td>電燈、LED</td></tr>
+      <tr><td>生理效應</td><td>電流通過人體造成刺激</td><td>電擊治療、心臟電擊器（觸電危險）</td></tr>
+    </tbody>
+  </table></div>
+  <ul class="pts">
+    <li><b>直流 DC</b>：大小、方向固定（電池）。<b>交流 AC</b>：大小、方向週期性改變（家用插座）。</li>
+    <li>台灣家用電：<mark>110 V／220 V、頻率 60 Hz</mark>。</li>
+    <li>電力系統流程：<b>發電 → 輸電（升壓，減少線路損失）→ 配電（降壓）→ 用戶</b>。</li>
+  </ul>
+</section>
+
+<section class="sec" id="s1-2">
+  <h3><span class="id">1-2</span>電的單位</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>SI 基本量（7 個）</th><th>單位</th><th>符號</th></tr></thead>
+    <tbody>
+      <tr><td>長度</td><td>公尺</td><td class="f">m</td></tr>
+      <tr><td>質量</td><td>公斤</td><td class="f">kg</td></tr>
+      <tr><td>時間</td><td>秒</td><td class="f">s</td></tr>
+      <tr><td>電流</td><td>安培 <mark>（唯一的電學基本單位）</mark></td><td class="f">A</td></tr>
+      <tr><td>溫度</td><td>克耳文</td><td class="f">K</td></tr>
+      <tr><td>物質的量</td><td>莫耳</td><td class="f">mol</td></tr>
+      <tr><td>光強度</td><td>燭光</td><td class="f">cd</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tbl"><table>
+    <thead><tr><th>常用導出量</th><th>單位（符號）</th><th>換算</th></tr></thead>
+    <tbody>
+      <tr><td>電荷 Q</td><td>庫侖（C）</td><td class="f">1 <ruby>C<rt>庫侖</rt></ruby> = 1 <ruby>A<rt>安培</rt></ruby> · <ruby>s<rt>秒</rt></ruby></td></tr>
+      <tr><td>電壓 V</td><td>伏特（V）</td><td class="f">1 <ruby>V<rt>伏特</rt></ruby> = 1 <ruby>J<rt>焦耳</rt></ruby> / <ruby>C<rt>庫侖</rt></ruby></td></tr>
+      <tr><td>能量 W</td><td>焦耳（J）</td><td class="f">1 <ruby>J<rt>焦耳</rt></ruby> = 1 <ruby>N<rt>牛頓</rt></ruby> · <ruby>m<rt>公尺</rt></ruby> = 1 <ruby>W<rt>瓦特</rt></ruby> · <ruby>s<rt>秒</rt></ruby></td></tr>
+      <tr><td>功率 P</td><td>瓦特（W）</td><td class="f">1 <ruby>W<rt>瓦特</rt></ruby> = 1 <ruby>J<rt>焦耳</rt></ruby> / <ruby>s<rt>秒</rt></ruby></td></tr>
+      <tr><td>電阻 R</td><td>歐姆（Ω）</td><td class="f">1 <ruby>Ω<rt>歐姆</rt></ruby> = 1 <ruby>V<rt>伏特</rt></ruby> / <ruby>A<rt>安培</rt></ruby></td></tr>
+      <tr><td>電導 G</td><td>西門子（S）</td><td class="f">1 <ruby>S<rt>西門子</rt></ruby> = 1 / <ruby>Ω<rt>歐姆</rt></ruby></td></tr>
+    </tbody>
+  </table></div>
+  <div class="tbl"><table>
+    <thead><tr><th>字首</th><th>符號</th><th>倍數</th><th>字首</th><th>符號</th><th>倍數</th></tr></thead>
+    <tbody>
+      <tr><td>兆 tera</td><td class="f">T</td><td class="f">10¹²</td><td>毫 milli</td><td class="f">m</td><td class="f">10⁻³</td></tr>
+      <tr><td>吉 giga</td><td class="f">G</td><td class="f">10⁹</td><td>微 micro</td><td class="f">μ</td><td class="f">10⁻⁶</td></tr>
+      <tr><td>百萬 mega</td><td class="f">M</td><td class="f">10⁶</td><td>奈 nano</td><td class="f">n</td><td class="f">10⁻⁹</td></tr>
+      <tr><td>千 kilo</td><td class="f">k</td><td class="f">10³</td><td>皮 pico</td><td class="f">p</td><td class="f">10⁻¹²</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note warn"><b class="tag">陷阱</b><p>大寫 <b>M</b>（10⁶）和小寫 <b>m</b>（10⁻³）差了 10⁹ 倍；千是小寫 <b>k</b>。每一級差 10³。</p></div>
+</section>
+
+<section class="sec" id="s1-3">
+  <h3><span class="id">1-3</span>電能</h3>
+  <div class="formulas">
+    <span class="f"><ruby>W<rt>電能</rt></ruby> = <ruby>V<rt>電壓</rt></ruby> × <ruby>Q<rt>電荷</rt></ruby></span><span class="f"><ruby>W<rt>電能</rt></ruby> = <ruby>P<rt>功率</rt></ruby> × <ruby>t<rt>時間</rt></ruby></span><span class="f"><ruby>W<rt>電能</rt></ruby> = <ruby>V<rt>電壓</rt></ruby> <ruby>I<rt>電流</rt></ruby> <ruby>t<rt>時間</rt></ruby></span><span class="f"><ruby>η<rt>效率</rt></ruby> = <ruby>W出<rt>輸出能量</rt></ruby> / <ruby>W入<rt>輸入能量</rt></ruby> × 100%</span>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>能量單位</th><th>換算成焦耳</th></tr></thead>
+    <tbody>
+      <tr><td>1 度（1 kWh）</td><td class="f">= 1000 <ruby>W<rt>瓦特</rt></ruby> × 3600 <ruby>s<rt>秒</rt></ruby> = 3.6 × 10⁶ <ruby>J<rt>焦耳</rt></ruby></td></tr>
+      <tr><td>1 卡（cal）</td><td class="f">≈ 4.2 <ruby>J<rt>焦耳</rt></ruby>（1 <ruby>J<rt>焦耳</rt></ruby> ≈ 0.24 <ruby>cal<rt>卡</rt></ruby>）</td></tr>
+      <tr><td>1 電子伏特（eV）</td><td class="f">= 1.602 × 10⁻¹⁹ <ruby>J<rt>焦耳</rt></ruby></td></tr>
+    </tbody>
+  </table></div>
+  <ul class="pts">
+    <li>能量守恆：能量不會消失，只會轉換形式；損失的部分大多變成熱。</li>
+    <li>效率 η 一定 <b>小於 100%</b>。</li>
+  </ul>
+  <div class="note ex"><b class="tag">例題</b><p>1000 W 電熱器用 3 小時：<span class="f"><ruby>W<rt>電能</rt></ruby> = <ruby>P<rt>功率</rt></ruby> × <ruby>t<rt>時間</rt></ruby> = 1 kW × 3 h</span> = <b>3 度</b> = 3 × 3.6×10⁶ = 1.08×10⁷ J。</p></div>
+</section>
+
+<section class="sec" id="s1-4">
+  <h3><span class="id">1-4</span>電荷</h3>
+  <div class="formulas">
+    <span class="f"><ruby>e<rt>電子電量</rt></ruby> = −1.602 × 10⁻¹⁹ <ruby>C<rt>庫侖</rt></ruby></span><span class="f">1 <ruby>C<rt>庫侖</rt></ruby> ≈ 6.25 × 10¹⁸ 個電子</span><span class="f"><ruby>Q<rt>總電荷</rt></ruby> = <ruby>n<rt>電子個數</rt></ruby> × <ruby>e<rt>電子電量</rt></ruby></span><span class="f"><ruby>F<rt>靜電力</rt></ruby> = <ruby>k<rt>庫侖常數</rt></ruby> <ruby>Q₁<rt>電荷1</rt></ruby> <ruby>Q₂<rt>電荷2</rt></ruby> / <ruby>r<rt>距離</rt></ruby>²</span>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>粒子</th><th>電性</th><th>電量</th><th>質量</th></tr></thead>
+    <tbody>
+      <tr><td>質子</td><td>正</td><td class="f">+1.602×10⁻¹⁹ C</td><td class="f">1.67×10⁻²⁷ kg</td></tr>
+      <tr><td>中子</td><td>不帶電</td><td class="f">0</td><td class="f">≈1.67×10⁻²⁷ kg</td></tr>
+      <tr><td>電子</td><td>負</td><td class="f">−1.602×10⁻¹⁹ C</td><td class="f">9.11×10⁻³¹ kg</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tbl"><table>
+    <thead><tr><th>最外層價電子數</th><th>材料分類</th><th>例子</th></tr></thead>
+    <tbody>
+      <tr><td>少於 4 個</td><td>導體（容易失去電子）</td><td>銀、銅、金、鋁</td></tr>
+      <tr><td>等於 4 個</td><td>半導體</td><td>矽 Si、鍺 Ge</td></tr>
+      <tr><td>多於 4 個</td><td>絕緣體</td><td>橡膠、雲母、玻璃</td></tr>
+    </tbody>
+  </table></div>
+  <ul class="pts">
+    <li>第 n 層電子最多 <span class="f">2<ruby>n<rt>層數</rt></ruby>²</span> 個；最外層最多 8 個。</li>
+    <li>物體<b>失去電子帶正電</b>，<b>得到電子帶負電</b>（移動的是電子，不是質子）。</li>
+    <li>庫侖定律：同性相斥、異性相吸，<span class="f"><ruby>k<rt>庫侖常數</rt></ruby> = 9 × 10⁹ N·m²/C²</span>；力與距離平方成反比。</li>
+  </ul>
+  <div class="note warn"><b class="tag">陷阱</b><p>距離變 2 倍，力變 <b>1/4</b>；兩電荷都變 2 倍，力變 <b>4</b> 倍。</p></div>
+</section>
+
+<section class="sec" id="s1-5">
+  <h3><span class="id">1-5</span>電壓</h3>
+  <div class="formulas">
+    <span class="f"><ruby>V<rt>電壓</rt></ruby> = <ruby>W<rt>電能</rt></ruby> / <ruby>Q<rt>電荷</rt></ruby></span><span class="f">1 <ruby>V<rt>伏特</rt></ruby> = 1 <ruby>J<rt>焦耳</rt></ruby> / <ruby>C<rt>庫侖</rt></ruby></span><span class="f"><ruby>Vab<rt>a對b電壓</rt></ruby> = <ruby>Va<rt>a點電位</rt></ruby> − <ruby>Vb<rt>b點電位</rt></ruby></span>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>名詞</th><th>意義</th></tr></thead>
+    <tbody>
+      <tr><td>電位</td><td>某點相對於參考點（接地 = 0 V）的電壓</td></tr>
+      <tr><td>電位差（電壓）</td><td>兩點電位的差，移動 1 C 電荷所做的功</td></tr>
+      <tr><td>電動勢 E</td><td>電源內部把其他能量轉成電能、推動電荷的能力（電池、發電機）</td></tr>
+      <tr><td>電壓降</td><td>電流流過負載（電阻）後電位降低</td></tr>
+    </tbody>
+  </table></div>
+  <ul class="pts">
+    <li><span class="f"><ruby>Vab<rt>a對b電壓</rt></ruby> = −<ruby>Vba<rt>b對a電壓</rt></ruby></span>；Vab 為正代表 a 點電位比 b 點高。</li>
+    <li>電壓表要與待測元件<b>並聯</b>。</li>
+  </ul>
+  <div class="note ex"><b class="tag">例題</b><p>將 5 C 電荷由 b 移到 a 做功 20 J，則 <span class="f"><ruby>Vab<rt>電壓</rt></ruby> = <ruby>W<rt>電能</rt></ruby> / <ruby>Q<rt>電荷</rt></ruby> = 20 / 5</span> = <b>4 V</b>。</p></div>
+</section>
+
+<section class="sec" id="s1-6">
+  <h3><span class="id">1-6</span>電流</h3>
+  <div class="formulas">
+    <span class="f"><ruby>I<rt>電流</rt></ruby> = <ruby>Q<rt>電荷</rt></ruby> / <ruby>t<rt>時間</rt></ruby></span><span class="f">1 <ruby>A<rt>安培</rt></ruby> = 1 <ruby>C<rt>庫侖</rt></ruby> / <ruby>s<rt>秒</rt></ruby></span>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>比較</th><th>電子流</th><th>傳統電流（課本用這個）</th></tr></thead>
+    <tbody>
+      <tr><td>方向</td><td>負極 → 正極</td><td>正極 → 負極（高電位 → 低電位）</td></tr>
+      <tr><td>關係</td><td colspan="2">兩者方向<b>相反</b></td></tr>
+    </tbody>
+  </table></div>
+  <ul class="pts">
+    <li>電流表要與待測元件<b>串聯</b>。</li>
+    <li>導體中移動的是自由電子；電解液中是正、負離子。</li>
+  </ul>
+  <div class="note ex"><b class="tag">例題</b><p>2 秒內通過 1.25×10¹⁹ 個電子：<span class="f"><ruby>Q<rt>電荷</rt></ruby> = 1.25×10¹⁹ ÷ 6.25×10¹⁸</span> = 2 C，<span class="f"><ruby>I<rt>電流</rt></ruby> = <ruby>Q<rt>電荷</rt></ruby> / <ruby>t<rt>時間</rt></ruby> = 2 / 2</span> = <b>1 A</b>。</p></div>
+</section>
+
+<section class="sec" id="s1-7">
+  <h3><span class="id">1-7</span>電功率</h3>
+  <div class="formulas">
+    <span class="f"><ruby>P<rt>功率</rt></ruby> = <ruby>W<rt>電能</rt></ruby> / <ruby>t<rt>時間</rt></ruby></span><span class="f"><ruby>P<rt>功率</rt></ruby> = <ruby>V<rt>電壓</rt></ruby> <ruby>I<rt>電流</rt></ruby></span><span class="f"><ruby>P<rt>功率</rt></ruby> = <ruby>I<rt>電流</rt></ruby>² <ruby>R<rt>電阻</rt></ruby></span><span class="f"><ruby>P<rt>功率</rt></ruby> = <ruby>V<rt>電壓</rt></ruby>² / <ruby>R<rt>電阻</rt></ruby></span><span class="f">1 <ruby>hp<rt>馬力</rt></ruby> = 746 <ruby>W<rt>瓦特</rt></ruby></span>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>題目給的量</th><th>選哪條公式</th></tr></thead>
+    <tbody>
+      <tr><td>電壓 V 和電流 I</td><td class="f"><ruby>P<rt>功率</rt></ruby> = <ruby>V<rt>電壓</rt></ruby> <ruby>I<rt>電流</rt></ruby></td></tr>
+      <tr><td>電流 I 和電阻 R（串聯常用）</td><td class="f"><ruby>P<rt>功率</rt></ruby> = <ruby>I<rt>電流</rt></ruby>² <ruby>R<rt>電阻</rt></ruby></td></tr>
+      <tr><td>電壓 V 和電阻 R（並聯常用）</td><td class="f"><ruby>P<rt>功率</rt></ruby> = <ruby>V<rt>電壓</rt></ruby>² / <ruby>R<rt>電阻</rt></ruby></td></tr>
+      <tr><td>電能 W 和時間 t</td><td class="f"><ruby>P<rt>功率</rt></ruby> = <ruby>W<rt>電能</rt></ruby> / <ruby>t<rt>時間</rt></ruby></td></tr>
+    </tbody>
+  </table></div>
+  <ul class="pts">
+    <li>電費：<span class="f">度數 = <ruby>P<rt>功率(kW)</rt></ruby> × <ruby>t<rt>時間(h)</rt></ruby> × 天數</span>，再乘每度電價。</li>
+    <li>燈泡標示「110 V、100 W」：<span class="f"><ruby>R<rt>電阻</rt></ruby> = <ruby>V<rt>電壓</rt></ruby>² / <ruby>P<rt>功率</rt></ruby> = 110² / 100</span> = 121 Ω（電阻固定）。</li>
+  </ul>
+  <div class="note warn"><b class="tag">陷阱</b><p>同一顆燈泡電壓變成一半，功率變成 <b>1/4</b>（因為 <span class="f"><ruby>P<rt>功率</rt></ruby> = <ruby>V<rt>電壓</rt></ruby>² / <ruby>R<rt>電阻</rt></ruby></span>，電阻 R 不變）。計算電費時瓦特要先換成 kW。</p></div>
+</section>
+
+<!-- ========== 第二章 ========== -->
+<div class="chapter c2"><span class="num">02</span><h2>電阻</h2></div>
+
+<section class="sec" id="s2-1">
+  <h3><span class="id">2-1</span>電阻及電導</h3>
+  <div class="formulas">
+    <span class="f"><ruby>R<rt>電阻</rt></ruby> = <ruby>ρ<rt>電阻係數</rt></ruby> <ruby>ℓ<rt>長度</rt></ruby> / <ruby>A<rt>截面積</rt></ruby></span><span class="f"><ruby>G<rt>電導</rt></ruby> = 1 / <ruby>R<rt>電阻</rt></ruby></span><span class="f"><ruby>σ<rt>電導係數</rt></ruby> = 1 / <ruby>ρ<rt>電阻係數</rt></ruby></span><span class="f"><ruby>A<rt>截面積</rt></ruby> = π <ruby>r<rt>半徑</rt></ruby>² = π <ruby>d<rt>直徑</rt></ruby>² / 4</span>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>符號</th><th>名稱</th><th>單位</th></tr></thead>
+    <tbody>
+      <tr><td class="f">R</td><td>電阻</td><td>Ω</td></tr>
+      <tr><td class="f">ρ</td><td>電阻係數（電阻率），由材料決定</td><td>Ω·m</td></tr>
+      <tr><td class="f">ℓ</td><td>導線長度</td><td>m</td></tr>
+      <tr><td class="f">A</td><td>截面積</td><td>m²</td></tr>
+      <tr><td class="f">G</td><td>電導</td><td>S（西門子，舊稱 ℧ 姆歐）</td></tr>
+      <tr><td class="f">σ</td><td>電導係數（電導率）</td><td>S/m</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tbl"><table>
+    <thead><tr><th>情況（同材料）</th><th>電阻變化</th></tr></thead>
+    <tbody>
+      <tr><td>長度變 n 倍（截面積不變）</td><td>R 變 n 倍</td></tr>
+      <tr><td>直徑變 n 倍</td><td>截面積 n² 倍 → R 變 1/n²</td></tr>
+      <tr><td><mark>拉長成 n 倍（體積不變）</mark></td><td>長度 ×n、截面積 ÷n → <b>R 變 n² 倍</b></td></tr>
+    </tbody>
+  </table></div>
+  <ul class="pts">
+    <li>導電性好到差：<b>銀 &gt; 銅 &gt; 金 &gt; 鋁</b>（電阻係數：銀最小）。</li>
+    <li>銅 ρ ≈ 1.72 × 10⁻⁸ Ω·m，最常用來做導線（便宜又導電好）。</li>
+    <li>英制：1 mil = 10⁻³ 吋；圓密爾 <span class="f"><ruby>A<rt>截面積(CM)</rt></ruby> = <ruby>d<rt>直徑(mil)</rt></ruby>²</span>。</li>
+  </ul>
+  <div class="note ex"><b class="tag">例題</b><p>一條 4 Ω 導線均勻拉長為原來 3 倍：<span class="f"><ruby>R₂<rt>新電阻</rt></ruby> = <ruby>R₁<rt>原電阻</rt></ruby> × <ruby>n<rt>倍數</rt></ruby>² = 4 × 3²</span> = <b>36 Ω</b>。</p></div>
+</section>
+
+<section class="sec" id="s2-2">
+  <h3><span class="id">2-2</span>各種電阻器</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>種類</th><th>特點</th></tr></thead>
+    <tbody>
+      <tr><td>碳膜電阻</td><td>最常見、便宜，誤差較大</td></tr>
+      <tr><td>金屬膜電阻</td><td>精密、誤差小、雜訊低</td></tr>
+      <tr><td>繞線電阻</td><td>電阻線繞成，<b>可承受大功率</b></td></tr>
+      <tr><td>水泥電阻</td><td>大功率、耐熱</td></tr>
+      <tr><td>可變電阻</td><td>可調整阻值（音量旋鈕）；半可變電阻用起子微調</td></tr>
+      <tr><td>熱敏電阻</td><td>NTC：溫度↑ 電阻↓；PTC：溫度↑ 電阻↑</td></tr>
+      <tr><td>光敏電阻（CdS）</td><td><b>光越強，電阻越小</b>（路燈自動開關）</td></tr>
+      <tr><td>壓敏電阻（VDR）</td><td>電壓超過某值電阻急降，做突波（過電壓）保護</td></tr>
+    </tbody>
+  </table></div>
+
+  <p style="margin:0"><b>色碼</b>　口訣：<mark>黑棕紅橙黃　綠藍紫灰白</mark>（0～9）</p>
+  <div class="bands" id="bands"></div>
+  <div class="tbl"><table>
+    <thead><tr><th>色環</th><th>4 環電阻</th><th>5 環精密電阻</th></tr></thead>
+    <tbody>
+      <tr><td>第 1 環</td><td>第 1 位數字</td><td>第 1 位數字</td></tr>
+      <tr><td>第 2 環</td><td>第 2 位數字</td><td>第 2 位數字</td></tr>
+      <tr><td>第 3 環</td><td>倍數（10 的次方）</td><td>第 3 位數字</td></tr>
+      <tr><td>第 4 環</td><td>誤差</td><td>倍數</td></tr>
+      <tr><td>第 5 環</td><td>—</td><td>誤差</td></tr>
+    </tbody>
+  </table></div>
+  <ul class="pts">
+    <li>誤差：<b>棕 ±1%、紅 ±2%、金 ±5%、銀 ±10%、無色 ±20%</b>。</li>
+    <li>倍數：金 = ×0.1，銀 = ×0.01。</li>
+    <li>文字標示：<span class="f">4K7</span> = 4.7 kΩ、<span class="f">R47</span> = 0.47 Ω、<span class="f">103</span> = 10 × 10³ = 10 kΩ。</li>
+    <li>額定功率看<b>體積</b>：體積越大，可承受的功率越大。</li>
+  </ul>
+
+  <div class="calc">
+    <b>色碼練習器（4 環）</b>
+    <div class="resistor" aria-hidden="true"><div class="lead"></div><div class="body"><span id="v1"></span><span id="v2"></span><span id="v3"></span><span id="v4"></span></div><div class="lead"></div></div>
+    <div class="row">
+      <label for="b1">第 1 環<select id="b1"></select></label>
+      <label for="b2">第 2 環<select id="b2"></select></label>
+      <label for="b3">倍數<select id="b3"></select></label>
+      <label for="b4">誤差<select id="b4"></select></label>
+    </div>
+    <div class="out" id="out" aria-live="polite"></div>
+  </div>
+  <div class="note ex"><b class="tag">例題</b><p>黃紫紅金 = 4、7、×10²、±5% = 4700 Ω = <b>4.7 kΩ ±5%</b>（範圍 4465～4935 Ω）。</p></div>
+</section>
+
+<section class="sec" id="s2-3">
+  <h3><span class="id">2-3</span>歐姆定律</h3>
+  <div class="formulas">
+    <span class="f"><ruby>V<rt>電壓</rt></ruby> = <ruby>I<rt>電流</rt></ruby> <ruby>R<rt>電阻</rt></ruby></span><span class="f"><ruby>I<rt>電流</rt></ruby> = <ruby>V<rt>電壓</rt></ruby> / <ruby>R<rt>電阻</rt></ruby></span><span class="f"><ruby>R<rt>電阻</rt></ruby> = <ruby>V<rt>電壓</rt></ruby> / <ruby>I<rt>電流</rt></ruby></span><span class="f"><ruby>I<rt>電流</rt></ruby> = <ruby>G<rt>電導</rt></ruby> <ruby>V<rt>電壓</rt></ruby></span>
+  </div>
+  <ul class="pts">
+    <li>溫度不變時，導體兩端電壓與電流<b>成正比</b>。</li>
+    <li>線性電阻的 V–I 圖是一條過原點的直線。橫軸 V、縱軸 I 時，<b>斜率 = 1 / 電阻 R = 電導 G</b>；斜率越大，電阻越小。</li>
+    <li>非線性元件（燈泡燈絲、二極體）不是直線。</li>
+  </ul>
+  <div class="note warn"><b class="tag">陷阱</b><p>看清楚圖的座標軸：橫軸是電流 I、縱軸是電壓 V 時，斜率才是電阻 R。</p></div>
+  <div class="note ex"><b class="tag">例題</b><p>10 Ω 電阻接 20 V：<span class="f"><ruby>I<rt>電流</rt></ruby> = <ruby>V<rt>電壓</rt></ruby> / <ruby>R<rt>電阻</rt></ruby> = 20 / 10</span> = 2 A，<span class="f"><ruby>P<rt>功率</rt></ruby> = <ruby>V<rt>電壓</rt></ruby> <ruby>I<rt>電流</rt></ruby> = 20 × 2</span> = 40 W。</p></div>
+</section>
+
+<section class="sec" id="s2-4">
+  <h3><span class="id">2-4</span>電阻溫度係數</h3>
+  <div class="formulas">
+    <span class="f"><ruby>R₂<rt>新電阻</rt></ruby> = <ruby>R₁<rt>原電阻</rt></ruby> [1 + <ruby>α₁<rt>t₁時溫度係數</rt></ruby> (<ruby>t₂<rt>新溫度</rt></ruby> − <ruby>t₁<rt>原溫度</rt></ruby>)]</span><span class="f"><ruby>R₂<rt>新電阻</rt></ruby> / <ruby>R₁<rt>原電阻</rt></ruby> = (<ruby>T<rt>推算絕對溫度</rt></ruby> + <ruby>t₂<rt>新溫度</rt></ruby>) / (<ruby>T<rt>推算絕對溫度</rt></ruby> + <ruby>t₁<rt>原溫度</rt></ruby>)</span><span class="f"><ruby>αₜ<rt>t°C時溫度係數</rt></ruby> = 1 / (<ruby>T<rt>推算絕對溫度</rt></ruby> + <ruby>t<rt>溫度</rt></ruby>)</span>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>類型</th><th>溫度升高時</th><th>材料</th></tr></thead>
+    <tbody>
+      <tr><td>正溫度係數（α &gt; 0）</td><td>電阻變大</td><td>金屬導體（銅、鋁）、PTC</td></tr>
+      <tr><td>負溫度係數（α &lt; 0）</td><td>電阻變小</td><td>半導體、碳、絕緣體、電解液、NTC</td></tr>
+      <tr><td>零溫度係數（α ≈ 0）</td><td>幾乎不變</td><td>錳銅、康銅（做標準電阻）</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tbl"><table>
+    <thead><tr><th>材料</th><th>推算絕對溫度 T</th><th>常用 α</th></tr></thead>
+    <tbody>
+      <tr><td>銅</td><td class="f">234.5 °C（即 −234.5 °C 時 R = 0）</td><td class="f"><ruby>α₀<rt>0°C溫度係數</rt></ruby> ≈ 0.00427、<ruby>α₂₀<rt>20°C溫度係數</rt></ruby> ≈ 0.00393</td></tr>
+      <tr><td>鋁</td><td class="f">236 °C</td><td class="f"><ruby>α₂₀<rt>20°C溫度係數</rt></ruby> ≈ 0.0039</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note warn"><b class="tag">陷阱</b><p>溫度係數 α 會隨參考溫度改變：α₁ 必須是 <b>原溫度 t₁ 時的係數</b>。溫度越高，α 越小。</p></div>
+  <div class="note ex"><b class="tag">例題</b><p>銅線 20 °C 時 10 Ω，求 70 °C 電阻：<span class="f"><ruby>R₂<rt>新電阻</rt></ruby> = <ruby>R₁<rt>原電阻</rt></ruby> × (<ruby>T<rt>推算溫度</rt></ruby> + <ruby>t₂<rt>新溫度</rt></ruby>) / (<ruby>T<rt>推算溫度</rt></ruby> + <ruby>t₁<rt>原溫度</rt></ruby>) = 10 × (234.5 + 70) / (234.5 + 20)</span> ≈ <b>11.96 Ω</b>。</p></div>
+</section>
+
+<!-- ========== 總表 ========== -->
+<section class="sec" id="sum">
+  <h3><span class="id">總表</span>考前 1 分鐘公式總複習</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>物理量</th><th>符號／單位</th><th>公式</th></tr></thead>
+    <tbody>
+      <tr><td>電荷</td><td>Q／C</td><td class="f"><ruby>Q<rt>電荷</rt></ruby> = <ruby>n<rt>電子數</rt></ruby> × 1.602×10⁻¹⁹、<ruby>Q<rt>電荷</rt></ruby> = <ruby>I<rt>電流</rt></ruby> <ruby>t<rt>時間</rt></ruby></td></tr>
+      <tr><td>電流</td><td>I／A</td><td class="f"><ruby>I<rt>電流</rt></ruby> = <ruby>Q<rt>電荷</rt></ruby> / <ruby>t<rt>時間</rt></ruby> = <ruby>V<rt>電壓</rt></ruby> / <ruby>R<rt>電阻</rt></ruby></td></tr>
+      <tr><td>電壓</td><td>V／V</td><td class="f"><ruby>V<rt>電壓</rt></ruby> = <ruby>W<rt>電能</rt></ruby> / <ruby>Q<rt>電荷</rt></ruby> = <ruby>I<rt>電流</rt></ruby> <ruby>R<rt>電阻</rt></ruby></td></tr>
+      <tr><td>電能</td><td>W／J</td><td class="f"><ruby>W<rt>電能</rt></ruby> = <ruby>V<rt>電壓</rt></ruby> <ruby>Q<rt>電荷</rt></ruby> = <ruby>P<rt>功率</rt></ruby> <ruby>t<rt>時間</rt></ruby>；1 度 = 3.6×10⁶ J</td></tr>
+      <tr><td>電功率</td><td>P／W</td><td class="f"><ruby>P<rt>功率</rt></ruby> = <ruby>V<rt>電壓</rt></ruby> <ruby>I<rt>電流</rt></ruby> = <ruby>I<rt>電流</rt></ruby>² <ruby>R<rt>電阻</rt></ruby> = <ruby>V<rt>電壓</rt></ruby>² / <ruby>R<rt>電阻</rt></ruby>；1 <ruby>hp<rt>馬力</rt></ruby> = 746 W</td></tr>
+      <tr><td>電阻</td><td>R／Ω</td><td class="f"><ruby>R<rt>電阻</rt></ruby> = <ruby>ρ<rt>電阻係數</rt></ruby> <ruby>ℓ<rt>長度</rt></ruby> / <ruby>A<rt>截面積</rt></ruby></td></tr>
+      <tr><td>電導</td><td>G／S</td><td class="f"><ruby>G<rt>電導</rt></ruby> = 1 / <ruby>R<rt>電阻</rt></ruby> = <ruby>σ<rt>電導係數</rt></ruby> <ruby>A<rt>截面積</rt></ruby> / <ruby>ℓ<rt>長度</rt></ruby></td></tr>
+      <tr><td>溫度對電阻</td><td>α／1/°C</td><td class="f"><ruby>R₂<rt>新電阻</rt></ruby> = <ruby>R₁<rt>原電阻</rt></ruby> [1 + <ruby>α₁<rt>溫度係數</rt></ruby> (<ruby>t₂<rt>新溫度</rt></ruby> − <ruby>t₁<rt>原溫度</rt></ruby>)]</td></tr>
+      <tr><td>庫侖定律</td><td>F／N</td><td class="f"><ruby>F<rt>靜電力</rt></ruby> = 9×10⁹ <ruby>Q₁<rt>電荷1</rt></ruby> <ruby>Q₂<rt>電荷2</rt></ruby> / <ruby>r<rt>距離</rt></ruby>²</td></tr>
+      <tr><td>效率</td><td>η／%</td><td class="f"><ruby>η<rt>效率</rt></ruby> = <ruby>P出<rt>輸出功率</rt></ruby> / <ruby>P入<rt>輸入功率</rt></ruby> × 100%</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<footer>依課本目錄 1-1～2-4 整理。數值以一般高職課本慣用值為準，若與你的課本有出入，以課本和老師上課為主。</footer>
+</div>
+
+<script>
+(function () {
+  var C = [
+    { n: "黑", c: "#1a1a1a", d: 0 }, { n: "棕", c: "#7a4a25", d: 1 }, { n: "紅", c: "#d12b2b", d: 2 },
+    { n: "橙", c: "#ef7d18", d: 3 }, { n: "黃", c: "#f2cf1d", d: 4 }, { n: "綠", c: "#2f9a3f", d: 5 },
+    { n: "藍", c: "#2a5fd1", d: 6 }, { n: "紫", c: "#7d3fc2", d: 7 }, { n: "灰", c: "#8a8a8a", d: 8 },
+    { n: "白", c: "#f6f6f6", d: 9 }
+  ];
+  var GOLD = { n: "金", c: "#c9a227" }, SILVER = { n: "銀", c: "#c0c4c8" }, NONE = { n: "無色", c: "transparent" };
+
+  var bands = document.getElementById("bands");
+  C.forEach(function (x) {
+    var el = document.createElement("div");
+    el.className = "band";
+    el.innerHTML = '<div class="sw" style="background:' + x.c + '"></div><div class="lb">' + x.n + ' <b>' + x.d + '</b></div>';
+    bands.appendChild(el);
+  });
+
+  var mult = C.slice(0, 8).map(function (x) { return { n: x.n, c: x.c, m: Math.pow(10, x.d) }; })
+    .concat([{ n: "金", c: GOLD.c, m: 0.1 }, { n: "銀", c: SILVER.c, m: 0.01 }]);
+  var tol = [
+    { n: "棕 ±1%", c: C[1].c, t: 1 }, { n: "紅 ±2%", c: C[2].c, t: 2 },
+    { n: "金 ±5%", c: GOLD.c, t: 5 }, { n: "銀 ±10%", c: SILVER.c, t: 10 }, { n: "無色 ±20%", c: NONE.c, t: 20 }
+  ];
+
+  function fill(id, list, sel) {
+    var s = document.getElementById(id);
+    list.forEach(function (x, i) { var o = document.createElement("option"); o.value = i; o.textContent = x.n; s.appendChild(o); });
+    s.value = sel;
+    s.addEventListener("change", update);
+  }
+  fill("b1", C, 4); fill("b2", C, 7); fill("b3", mult, 2); fill("b4", tol, 2);
+
+  function fmt(v) {
+    function r(x) { return parseFloat(x.toPrecision(3)); }
+    if (v >= 1e6) return r(v / 1e6) + " MΩ";
+    if (v >= 1e3) return r(v / 1e3) + " kΩ";
+    return r(v) + " Ω";
+  }
+  function update() {
+    var a = C[+document.getElementById("b1").value], b = C[+document.getElementById("b2").value];
+    var m = mult[+document.getElementById("b3").value], t = tol[+document.getElementById("b4").value];
+    document.getElementById("v1").style.background = a.c;
+    document.getElementById("v2").style.background = b.c;
+    document.getElementById("v3").style.background = m.c;
+    document.getElementById("v4").style.background = t.c;
+    var v = (a.d * 10 + b.d) * m.m;
+    document.getElementById("out").textContent =
+      "= " + (a.d * 10 + b.d) + " × " + m.m + " = " + fmt(v) + "  ±" + t.t + "%（" + fmt(v * (1 - t.t / 100)) + " ～ " + fmt(v * (1 + t.t / 100)) + "）";
+  }
+  update();
+})();
+</script>
+
+</body>
+</html>
