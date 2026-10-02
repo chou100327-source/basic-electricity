@@ -79,12 +79,14 @@ td:first-child { font-weight: 700; white-space: nowrap; }
 tr:last-child td { border-bottom: none; }
 
 .f { font-family: var(--mono); font-weight: 500; }
-ruby { ruby-position: over; ruby-align: center; margin-inline: 1px; }
-rt { font-family: var(--sans); font-size: 11px; font-weight: 700; color: var(--teal); letter-spacing: 0; line-height: 1.2; }
-td .f, td.f { line-height: 2.3; }
+.v { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; line-height: 1.2; margin-inline: 2px; }
+.v .zh { font-family: var(--sans); font-size: 11px; font-weight: 700; color: var(--teal); white-space: nowrap; }
+.v .s { white-space: nowrap; }
+.v .u { font-family: var(--sans); font-size: 11px; font-weight: 500; color: var(--muted); white-space: nowrap; }
+td .f, td.f { line-height: 2; }
 .formulas { display: flex; flex-wrap: wrap; gap: 10px; }
-.formulas .f { background: var(--teal-soft); color: var(--fg); border-radius: 8px; padding: 12px 12px 6px; font-size: 16px; line-height: 2.1; }
-.formulas .f rt { color: var(--teal); }
+.formulas .f { background: var(--teal-soft); color: var(--fg); border-radius: 8px; padding: 8px 12px; font-size: 16px; line-height: 2; }
+
 mark { background: var(--hl); color: inherit; padding: 0 3px; border-radius: 3px; }
 
 .note { border-radius: 10px; padding: 10px 14px; font-size: 15px; display: grid; gap: 4px; }
@@ -137,7 +139,7 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
 <header class="top">
   <div class="toprow"><div class="eyebrow">高職一年級 · 基本電學（上）· 第一次段考</div><button type="button" class="theme-btn" id="themeBtn">切換深色模式</button></div>
   <h1>第一章 電學概論 ＋ 第二章 電阻 重點整理</h1>
-  <p>先看每節的公式卡，再看表格；公式裡每個代號上方都標了中文名稱。紅色框是常考陷阱，虛線框是例題。</p>
+  <p>先看每節的公式卡，再看表格；公式裡每個代號上方是中文名稱、下方是單位。紅色框是常考陷阱，虛線框是例題。</p>
   <nav class="toc" aria-label="目錄">
     <a class="c1" href="#s1-1">1-1 特性應用</a><a class="c1" href="#s1-2">1-2 單位</a><a class="c1" href="#s1-3">1-3 電能</a><a class="c1" href="#s1-4">1-4 電荷</a><a class="c1" href="#s1-5">1-5 電壓</a><a class="c1" href="#s1-6">1-6 電流</a><a class="c1" href="#s1-7">1-7 電功率</a>
     <a class="c2" href="#s2-1">2-1 電阻電導</a><a class="c2" href="#s2-2">2-2 電阻器</a><a class="c2" href="#s2-3">2-3 歐姆定律</a><a class="c2" href="#s2-4">2-4 溫度係數</a>
@@ -184,12 +186,12 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
   <div class="tbl"><table>
     <thead><tr><th>常用導出量</th><th>單位（符號）</th><th>換算</th></tr></thead>
     <tbody>
-      <tr><td>電荷 Q</td><td>庫侖（C）</td><td class="f">1 <ruby>C<rt>庫侖</rt></ruby> = 1 <ruby>A<rt>安培</rt></ruby> · <ruby>s<rt>秒</rt></ruby></td></tr>
-      <tr><td>電壓 V</td><td>伏特（V）</td><td class="f">1 <ruby>V<rt>伏特</rt></ruby> = 1 <ruby>J<rt>焦耳</rt></ruby> / <ruby>C<rt>庫侖</rt></ruby></td></tr>
-      <tr><td>能量 W</td><td>焦耳（J）</td><td class="f">1 <ruby>J<rt>焦耳</rt></ruby> = 1 <ruby>N<rt>牛頓</rt></ruby> · <ruby>m<rt>公尺</rt></ruby> = 1 <ruby>W<rt>瓦特</rt></ruby> · <ruby>s<rt>秒</rt></ruby></td></tr>
-      <tr><td>功率 P</td><td>瓦特（W）</td><td class="f">1 <ruby>W<rt>瓦特</rt></ruby> = 1 <ruby>J<rt>焦耳</rt></ruby> / <ruby>s<rt>秒</rt></ruby></td></tr>
-      <tr><td>電阻 R</td><td>歐姆（Ω）</td><td class="f">1 <ruby>Ω<rt>歐姆</rt></ruby> = 1 <ruby>V<rt>伏特</rt></ruby> / <ruby>A<rt>安培</rt></ruby></td></tr>
-      <tr><td>電導 G</td><td>西門子（S）</td><td class="f">1 <ruby>S<rt>西門子</rt></ruby> = 1 / <ruby>Ω<rt>歐姆</rt></ruby></td></tr>
+      <tr><td>電荷 Q</td><td>庫侖（C）</td><td class="f">1 <span class="v"><span class="zh">庫侖</span><span class="s">C</span><span class="u">&nbsp;</span></span> = 1 <span class="v"><span class="zh">安培</span><span class="s">A</span><span class="u">&nbsp;</span></span> · <span class="v"><span class="zh">秒</span><span class="s">s</span><span class="u">&nbsp;</span></span></td></tr>
+      <tr><td>電壓 V</td><td>伏特（V）</td><td class="f">1 <span class="v"><span class="zh">伏特</span><span class="s">V</span><span class="u">&nbsp;</span></span> = 1 <span class="v"><span class="zh">焦耳</span><span class="s">J</span><span class="u">&nbsp;</span></span> / <span class="v"><span class="zh">庫侖</span><span class="s">C</span><span class="u">&nbsp;</span></span></td></tr>
+      <tr><td>能量 W</td><td>焦耳（J）</td><td class="f">1 <span class="v"><span class="zh">焦耳</span><span class="s">J</span><span class="u">&nbsp;</span></span> = 1 <span class="v"><span class="zh">牛頓</span><span class="s">N</span><span class="u">&nbsp;</span></span> · <span class="v"><span class="zh">公尺</span><span class="s">m</span><span class="u">&nbsp;</span></span> = 1 <span class="v"><span class="zh">瓦特</span><span class="s">W</span><span class="u">&nbsp;</span></span> · <span class="v"><span class="zh">秒</span><span class="s">s</span><span class="u">&nbsp;</span></span></td></tr>
+      <tr><td>功率 P</td><td>瓦特（W）</td><td class="f">1 <span class="v"><span class="zh">瓦特</span><span class="s">W</span><span class="u">&nbsp;</span></span> = 1 <span class="v"><span class="zh">焦耳</span><span class="s">J</span><span class="u">&nbsp;</span></span> / <span class="v"><span class="zh">秒</span><span class="s">s</span><span class="u">&nbsp;</span></span></td></tr>
+      <tr><td>電阻 R</td><td>歐姆（Ω）</td><td class="f">1 <span class="v"><span class="zh">歐姆</span><span class="s">Ω</span><span class="u">&nbsp;</span></span> = 1 <span class="v"><span class="zh">伏特</span><span class="s">V</span><span class="u">&nbsp;</span></span> / <span class="v"><span class="zh">安培</span><span class="s">A</span><span class="u">&nbsp;</span></span></td></tr>
+      <tr><td>電導 G</td><td>西門子（S）</td><td class="f">1 <span class="v"><span class="zh">西門子</span><span class="s">S</span><span class="u">&nbsp;</span></span> = 1 / <span class="v"><span class="zh">歐姆</span><span class="s">Ω</span><span class="u">&nbsp;</span></span></td></tr>
     </tbody>
   </table></div>
   <div class="tbl"><table>
@@ -207,27 +209,27 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
 <section class="sec" id="s1-3">
   <h3><span class="id">1-3</span>電能</h3>
   <div class="formulas">
-    <span class="f"><ruby>W<rt>電能</rt></ruby> = <ruby>V<rt>電壓</rt></ruby> × <ruby>Q<rt>電荷</rt></ruby></span><span class="f"><ruby>W<rt>電能</rt></ruby> = <ruby>P<rt>功率</rt></ruby> × <ruby>t<rt>時間</rt></ruby></span><span class="f"><ruby>W<rt>電能</rt></ruby> = <ruby>V<rt>電壓</rt></ruby> <ruby>I<rt>電流</rt></ruby> <ruby>t<rt>時間</rt></ruby></span><span class="f"><ruby>η<rt>效率</rt></ruby> = <ruby>W出<rt>輸出能量</rt></ruby> / <ruby>W入<rt>輸入能量</rt></ruby> × 100%</span>
+    <span class="f"><span class="v"><span class="zh">電能</span><span class="s">W</span><span class="u">J</span></span> = <span class="v"><span class="zh">電壓</span><span class="s">V</span><span class="u">V</span></span> × <span class="v"><span class="zh">電荷</span><span class="s">Q</span><span class="u">C</span></span></span><span class="f"><span class="v"><span class="zh">電能</span><span class="s">W</span><span class="u">J</span></span> = <span class="v"><span class="zh">功率</span><span class="s">P</span><span class="u">W</span></span> × <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span></span><span class="f"><span class="v"><span class="zh">電能</span><span class="s">W</span><span class="u">J</span></span> = <span class="v"><span class="zh">電壓</span><span class="s">V</span><span class="u">V</span></span> <span class="v"><span class="zh">電流</span><span class="s">I</span><span class="u">A</span></span> <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span></span><span class="f"><span class="v"><span class="zh">效率</span><span class="s">η</span><span class="u">%</span></span> = <span class="v"><span class="zh">輸出能量</span><span class="s">W出</span><span class="u">J</span></span> / <span class="v"><span class="zh">輸入能量</span><span class="s">W入</span><span class="u">J</span></span> × 100%</span>
   </div>
   <div class="tbl"><table>
     <thead><tr><th>能量單位</th><th>換算成焦耳</th></tr></thead>
     <tbody>
-      <tr><td>1 度（1 kWh）</td><td class="f">= 1000 <ruby>W<rt>瓦特</rt></ruby> × 3600 <ruby>s<rt>秒</rt></ruby> = 3.6 × 10⁶ <ruby>J<rt>焦耳</rt></ruby></td></tr>
-      <tr><td>1 卡（cal）</td><td class="f">≈ 4.2 <ruby>J<rt>焦耳</rt></ruby>（1 <ruby>J<rt>焦耳</rt></ruby> ≈ 0.24 <ruby>cal<rt>卡</rt></ruby>）</td></tr>
-      <tr><td>1 電子伏特（eV）</td><td class="f">= 1.602 × 10⁻¹⁹ <ruby>J<rt>焦耳</rt></ruby></td></tr>
+      <tr><td>1 度（1 kWh）</td><td class="f">= 1000 <span class="v"><span class="zh">瓦特</span><span class="s">W</span><span class="u">&nbsp;</span></span> × 3600 <span class="v"><span class="zh">秒</span><span class="s">s</span><span class="u">&nbsp;</span></span> = 3.6 × 10⁶ <span class="v"><span class="zh">焦耳</span><span class="s">J</span><span class="u">&nbsp;</span></span></td></tr>
+      <tr><td>1 卡（cal）</td><td class="f">≈ 4.2 <span class="v"><span class="zh">焦耳</span><span class="s">J</span><span class="u">&nbsp;</span></span>（1 <span class="v"><span class="zh">焦耳</span><span class="s">J</span><span class="u">&nbsp;</span></span> ≈ 0.24 <span class="v"><span class="zh">卡</span><span class="s">cal</span><span class="u">&nbsp;</span></span>）</td></tr>
+      <tr><td>1 電子伏特（eV）</td><td class="f">= 1.602 × 10⁻¹⁹ <span class="v"><span class="zh">焦耳</span><span class="s">J</span><span class="u">&nbsp;</span></span></td></tr>
     </tbody>
   </table></div>
   <ul class="pts">
     <li>能量守恆：能量不會消失，只會轉換形式；損失的部分大多變成熱。</li>
     <li>效率 η 一定 <b>小於 100%</b>。</li>
   </ul>
-  <div class="note ex"><b class="tag">例題</b><p>1000 W 電熱器用 3 小時：<span class="f"><ruby>W<rt>電能</rt></ruby> = <ruby>P<rt>功率</rt></ruby> × <ruby>t<rt>時間</rt></ruby> = 1 kW × 3 h</span> = <b>3 度</b> = 3 × 3.6×10⁶ = 1.08×10⁷ J。</p></div>
+  <div class="note ex"><b class="tag">例題</b><p>1000 W 電熱器用 3 小時：<span class="f"><span class="v"><span class="zh">電能</span><span class="s">W</span><span class="u">J</span></span> = <span class="v"><span class="zh">功率</span><span class="s">P</span><span class="u">W</span></span> × <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span> = 1 kW × 3 h</span> = <b>3 度</b> = 3 × 3.6×10⁶ = 1.08×10⁷ J。</p></div>
 </section>
 
 <section class="sec" id="s1-4">
   <h3><span class="id">1-4</span>電荷</h3>
   <div class="formulas">
-    <span class="f"><ruby>e<rt>電子電量</rt></ruby> = −1.602 × 10⁻¹⁹ <ruby>C<rt>庫侖</rt></ruby></span><span class="f">1 <ruby>C<rt>庫侖</rt></ruby> ≈ 6.25 × 10¹⁸ 個電子</span><span class="f"><ruby>Q<rt>總電荷</rt></ruby> = <ruby>n<rt>電子個數</rt></ruby> × <ruby>e<rt>電子電量</rt></ruby></span><span class="f"><ruby>F<rt>靜電力</rt></ruby> = <ruby>k<rt>庫侖常數</rt></ruby> <ruby>Q₁<rt>電荷1</rt></ruby> <ruby>Q₂<rt>電荷2</rt></ruby> / <ruby>r<rt>距離</rt></ruby>²</span>
+    <span class="f"><span class="v"><span class="zh">電子電量</span><span class="s">e</span><span class="u">C</span></span> = −1.602 × 10⁻¹⁹ <span class="v"><span class="zh">庫侖</span><span class="s">C</span><span class="u">&nbsp;</span></span></span><span class="f">1 <span class="v"><span class="zh">庫侖</span><span class="s">C</span><span class="u">&nbsp;</span></span> ≈ 6.25 × 10¹⁸ 個電子</span><span class="f"><span class="v"><span class="zh">總電荷</span><span class="s">Q</span><span class="u">C</span></span> = <span class="v"><span class="zh">電子個數</span><span class="s">n</span><span class="u">個</span></span> × <span class="v"><span class="zh">電子電量</span><span class="s">e</span><span class="u">C</span></span></span><span class="f"><span class="v"><span class="zh">靜電力</span><span class="s">F</span><span class="u">N</span></span> = <span class="v"><span class="zh">庫侖常數</span><span class="s">k</span><span class="u">N·m²/C²</span></span> <span class="v"><span class="zh">電荷1</span><span class="s">Q₁</span><span class="u">C</span></span> <span class="v"><span class="zh">電荷2</span><span class="s">Q₂</span><span class="u">C</span></span> / <span class="v"><span class="zh">距離</span><span class="s">r</span><span class="u">m</span></span>²</span>
   </div>
   <div class="tbl"><table>
     <thead><tr><th>粒子</th><th>電性</th><th>電量</th><th>質量</th></tr></thead>
@@ -246,9 +248,9 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
     </tbody>
   </table></div>
   <ul class="pts">
-    <li>第 n 層電子最多 <span class="f">2<ruby>n<rt>層數</rt></ruby>²</span> 個；最外層最多 8 個。</li>
+    <li>第 n 層電子最多 <span class="f">2<span class="v"><span class="zh">層數</span><span class="s">n</span><span class="u">&nbsp;</span></span>²</span> 個；最外層最多 8 個。</li>
     <li>物體<b>失去電子帶正電</b>，<b>得到電子帶負電</b>（移動的是電子，不是質子）。</li>
-    <li>庫侖定律：同性相斥、異性相吸，<span class="f"><ruby>k<rt>庫侖常數</rt></ruby> = 9 × 10⁹ N·m²/C²</span>；力與距離平方成反比。</li>
+    <li>庫侖定律：同性相斥、異性相吸，<span class="f"><span class="v"><span class="zh">庫侖常數</span><span class="s">k</span><span class="u">N·m²/C²</span></span> = 9 × 10⁹ N·m²/C²</span>；力與距離平方成反比。</li>
   </ul>
   <div class="note warn"><b class="tag">陷阱</b><p>距離變 2 倍，力變 <b>1/4</b>；兩電荷都變 2 倍，力變 <b>4</b> 倍。</p></div>
 </section>
@@ -256,7 +258,7 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
 <section class="sec" id="s1-5">
   <h3><span class="id">1-5</span>電壓</h3>
   <div class="formulas">
-    <span class="f"><ruby>V<rt>電壓</rt></ruby> = <ruby>W<rt>電能</rt></ruby> / <ruby>Q<rt>電荷</rt></ruby></span><span class="f">1 <ruby>V<rt>伏特</rt></ruby> = 1 <ruby>J<rt>焦耳</rt></ruby> / <ruby>C<rt>庫侖</rt></ruby></span><span class="f"><ruby>Vab<rt>a對b電壓</rt></ruby> = <ruby>Va<rt>a點電位</rt></ruby> − <ruby>Vb<rt>b點電位</rt></ruby></span>
+    <span class="f"><span class="v"><span class="zh">電壓</span><span class="s">V</span><span class="u">V</span></span> = <span class="v"><span class="zh">電能</span><span class="s">W</span><span class="u">J</span></span> / <span class="v"><span class="zh">電荷</span><span class="s">Q</span><span class="u">C</span></span></span><span class="f">1 <span class="v"><span class="zh">伏特</span><span class="s">V</span><span class="u">&nbsp;</span></span> = 1 <span class="v"><span class="zh">焦耳</span><span class="s">J</span><span class="u">&nbsp;</span></span> / <span class="v"><span class="zh">庫侖</span><span class="s">C</span><span class="u">&nbsp;</span></span></span><span class="f"><span class="v"><span class="zh">a對b電壓</span><span class="s">Vab</span><span class="u">V</span></span> = <span class="v"><span class="zh">a點電位</span><span class="s">Va</span><span class="u">V</span></span> − <span class="v"><span class="zh">b點電位</span><span class="s">Vb</span><span class="u">V</span></span></span>
   </div>
   <div class="tbl"><table>
     <thead><tr><th>名詞</th><th>意義</th></tr></thead>
@@ -268,16 +270,16 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
     </tbody>
   </table></div>
   <ul class="pts">
-    <li><span class="f"><ruby>Vab<rt>a對b電壓</rt></ruby> = −<ruby>Vba<rt>b對a電壓</rt></ruby></span>；Vab 為正代表 a 點電位比 b 點高。</li>
+    <li><span class="f"><span class="v"><span class="zh">a對b電壓</span><span class="s">Vab</span><span class="u">V</span></span> = −<span class="v"><span class="zh">b對a電壓</span><span class="s">Vba</span><span class="u">V</span></span></span>；Vab 為正代表 a 點電位比 b 點高。</li>
     <li>電壓表要與待測元件<b>並聯</b>。</li>
   </ul>
-  <div class="note ex"><b class="tag">例題</b><p>將 5 C 電荷由 b 移到 a 做功 20 J，則 <span class="f"><ruby>Vab<rt>電壓</rt></ruby> = <ruby>W<rt>電能</rt></ruby> / <ruby>Q<rt>電荷</rt></ruby> = 20 / 5</span> = <b>4 V</b>。</p></div>
+  <div class="note ex"><b class="tag">例題</b><p>將 5 C 電荷由 b 移到 a 做功 20 J，則 <span class="f"><span class="v"><span class="zh">電壓</span><span class="s">Vab</span><span class="u">V</span></span> = <span class="v"><span class="zh">電能</span><span class="s">W</span><span class="u">J</span></span> / <span class="v"><span class="zh">電荷</span><span class="s">Q</span><span class="u">C</span></span> = 20 / 5</span> = <b>4 V</b>。</p></div>
 </section>
 
 <section class="sec" id="s1-6">
   <h3><span class="id">1-6</span>電流</h3>
   <div class="formulas">
-    <span class="f"><ruby>I<rt>電流</rt></ruby> = <ruby>Q<rt>電荷</rt></ruby> / <ruby>t<rt>時間</rt></ruby></span><span class="f">1 <ruby>A<rt>安培</rt></ruby> = 1 <ruby>C<rt>庫侖</rt></ruby> / <ruby>s<rt>秒</rt></ruby></span>
+    <span class="f"><span class="v"><span class="zh">電流</span><span class="s">I</span><span class="u">A</span></span> = <span class="v"><span class="zh">電荷</span><span class="s">Q</span><span class="u">C</span></span> / <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span></span><span class="f">1 <span class="v"><span class="zh">安培</span><span class="s">A</span><span class="u">&nbsp;</span></span> = 1 <span class="v"><span class="zh">庫侖</span><span class="s">C</span><span class="u">&nbsp;</span></span> / <span class="v"><span class="zh">秒</span><span class="s">s</span><span class="u">&nbsp;</span></span></span>
   </div>
   <div class="tbl"><table>
     <thead><tr><th>比較</th><th>電子流</th><th>傳統電流（課本用這個）</th></tr></thead>
@@ -290,28 +292,28 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
     <li>電流表要與待測元件<b>串聯</b>。</li>
     <li>導體中移動的是自由電子；電解液中是正、負離子。</li>
   </ul>
-  <div class="note ex"><b class="tag">例題</b><p>2 秒內通過 1.25×10¹⁹ 個電子：<span class="f"><ruby>Q<rt>電荷</rt></ruby> = 1.25×10¹⁹ ÷ 6.25×10¹⁸</span> = 2 C，<span class="f"><ruby>I<rt>電流</rt></ruby> = <ruby>Q<rt>電荷</rt></ruby> / <ruby>t<rt>時間</rt></ruby> = 2 / 2</span> = <b>1 A</b>。</p></div>
+  <div class="note ex"><b class="tag">例題</b><p>2 秒內通過 1.25×10¹⁹ 個電子：<span class="f"><span class="v"><span class="zh">電荷</span><span class="s">Q</span><span class="u">C</span></span> = 1.25×10¹⁹ ÷ 6.25×10¹⁸</span> = 2 C，<span class="f"><span class="v"><span class="zh">電流</span><span class="s">I</span><span class="u">A</span></span> = <span class="v"><span class="zh">電荷</span><span class="s">Q</span><span class="u">C</span></span> / <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span> = 2 / 2</span> = <b>1 A</b>。</p></div>
 </section>
 
 <section class="sec" id="s1-7">
   <h3><span class="id">1-7</span>電功率</h3>
   <div class="formulas">
-    <span class="f"><ruby>P<rt>功率</rt></ruby> = <ruby>W<rt>電能</rt></ruby> / <ruby>t<rt>時間</rt></ruby></span><span class="f"><ruby>P<rt>功率</rt></ruby> = <ruby>V<rt>電壓</rt></ruby> <ruby>I<rt>電流</rt></ruby></span><span class="f"><ruby>P<rt>功率</rt></ruby> = <ruby>I<rt>電流</rt></ruby>² <ruby>R<rt>電阻</rt></ruby></span><span class="f"><ruby>P<rt>功率</rt></ruby> = <ruby>V<rt>電壓</rt></ruby>² / <ruby>R<rt>電阻</rt></ruby></span><span class="f">1 <ruby>hp<rt>馬力</rt></ruby> = 746 <ruby>W<rt>瓦特</rt></ruby></span>
+    <span class="f"><span class="v"><span class="zh">功率</span><span class="s">P</span><span class="u">W</span></span> = <span class="v"><span class="zh">電能</span><span class="s">W</span><span class="u">J</span></span> / <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span></span><span class="f"><span class="v"><span class="zh">功率</span><span class="s">P</span><span class="u">W</span></span> = <span class="v"><span class="zh">電壓</span><span class="s">V</span><span class="u">V</span></span> <span class="v"><span class="zh">電流</span><span class="s">I</span><span class="u">A</span></span></span><span class="f"><span class="v"><span class="zh">功率</span><span class="s">P</span><span class="u">W</span></span> = <span class="v"><span class="zh">電流</span><span class="s">I</span><span class="u">A</span></span>² <span class="v"><span class="zh">電阻</span><span class="s">R</span><span class="u">Ω</span></span></span><span class="f"><span class="v"><span class="zh">功率</span><span class="s">P</span><span class="u">W</span></span> = <span class="v"><span class="zh">電壓</span><span class="s">V</span><span class="u">V</span></span>² / <span class="v"><span class="zh">電阻</span><span class="s">R</span><span class="u">Ω</span></span></span><span class="f">1 <span class="v"><span class="zh">馬力</span><span class="s">hp</span><span class="u">&nbsp;</span></span> = 746 <span class="v"><span class="zh">瓦特</span><span class="s">W</span><span class="u">&nbsp;</span></span></span>
   </div>
   <div class="tbl"><table>
     <thead><tr><th>題目給的量</th><th>選哪條公式</th></tr></thead>
     <tbody>
-      <tr><td>電壓 V 和電流 I</td><td class="f"><ruby>P<rt>功率</rt></ruby> = <ruby>V<rt>電壓</rt></ruby> <ruby>I<rt>電流</rt></ruby></td></tr>
-      <tr><td>電流 I 和電阻 R（串聯常用）</td><td class="f"><ruby>P<rt>功率</rt></ruby> = <ruby>I<rt>電流</rt></ruby>² <ruby>R<rt>電阻</rt></ruby></td></tr>
-      <tr><td>電壓 V 和電阻 R（並聯常用）</td><td class="f"><ruby>P<rt>功率</rt></ruby> = <ruby>V<rt>電壓</rt></ruby>² / <ruby>R<rt>電阻</rt></ruby></td></tr>
-      <tr><td>電能 W 和時間 t</td><td class="f"><ruby>P<rt>功率</rt></ruby> = <ruby>W<rt>電能</rt></ruby> / <ruby>t<rt>時間</rt></ruby></td></tr>
+      <tr><td>電壓 V 和電流 I</td><td class="f"><span class="v"><span class="zh">功率</span><span class="s">P</span><span class="u">W</span></span> = <span class="v"><span class="zh">電壓</span><span class="s">V</span><span class="u">V</span></span> <span class="v"><span class="zh">電流</span><span class="s">I</span><span class="u">A</span></span></td></tr>
+      <tr><td>電流 I 和電阻 R（串聯常用）</td><td class="f"><span class="v"><span class="zh">功率</span><span class="s">P</span><span class="u">W</span></span> = <span class="v"><span class="zh">電流</span><span class="s">I</span><span class="u">A</span></span>² <span class="v"><span class="zh">電阻</span><span class="s">R</span><span class="u">Ω</span></span></td></tr>
+      <tr><td>電壓 V 和電阻 R（並聯常用）</td><td class="f"><span class="v"><span class="zh">功率</span><span class="s">P</span><span class="u">W</span></span> = <span class="v"><span class="zh">電壓</span><span class="s">V</span><span class="u">V</span></span>² / <span class="v"><span class="zh">電阻</span><span class="s">R</span><span class="u">Ω</span></span></td></tr>
+      <tr><td>電能 W 和時間 t</td><td class="f"><span class="v"><span class="zh">功率</span><span class="s">P</span><span class="u">W</span></span> = <span class="v"><span class="zh">電能</span><span class="s">W</span><span class="u">J</span></span> / <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span></td></tr>
     </tbody>
   </table></div>
   <ul class="pts">
-    <li>電費：<span class="f">度數 = <ruby>P<rt>功率(kW)</rt></ruby> × <ruby>t<rt>時間(h)</rt></ruby> × 天數</span>，再乘每度電價。</li>
-    <li>燈泡標示「110 V、100 W」：<span class="f"><ruby>R<rt>電阻</rt></ruby> = <ruby>V<rt>電壓</rt></ruby>² / <ruby>P<rt>功率</rt></ruby> = 110² / 100</span> = 121 Ω（電阻固定）。</li>
+    <li>電費：<span class="f">度數 = <span class="v"><span class="zh">功率(kW)</span><span class="s">P</span><span class="u">kW</span></span> × <span class="v"><span class="zh">時間(h)</span><span class="s">t</span><span class="u">h</span></span> × 天數</span>，再乘每度電價。</li>
+    <li>燈泡標示「110 V、100 W」：<span class="f"><span class="v"><span class="zh">電阻</span><span class="s">R</span><span class="u">Ω</span></span> = <span class="v"><span class="zh">電壓</span><span class="s">V</span><span class="u">V</span></span>² / <span class="v"><span class="zh">功率</span><span class="s">P</span><span class="u">W</span></span> = 110² / 100</span> = 121 Ω（電阻固定）。</li>
   </ul>
-  <div class="note warn"><b class="tag">陷阱</b><p>同一顆燈泡電壓變成一半，功率變成 <b>1/4</b>（因為 <span class="f"><ruby>P<rt>功率</rt></ruby> = <ruby>V<rt>電壓</rt></ruby>² / <ruby>R<rt>電阻</rt></ruby></span>，電阻 R 不變）。計算電費時瓦特要先換成 kW。</p></div>
+  <div class="note warn"><b class="tag">陷阱</b><p>同一顆燈泡電壓變成一半，功率變成 <b>1/4</b>（因為 <span class="f"><span class="v"><span class="zh">功率</span><span class="s">P</span><span class="u">W</span></span> = <span class="v"><span class="zh">電壓</span><span class="s">V</span><span class="u">V</span></span>² / <span class="v"><span class="zh">電阻</span><span class="s">R</span><span class="u">Ω</span></span></span>，電阻 R 不變）。計算電費時瓦特要先換成 kW。</p></div>
 </section>
 
 <!-- ========== 第二章 ========== -->
@@ -320,7 +322,7 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
 <section class="sec" id="s2-1">
   <h3><span class="id">2-1</span>電阻及電導</h3>
   <div class="formulas">
-    <span class="f"><ruby>R<rt>電阻</rt></ruby> = <ruby>ρ<rt>電阻係數</rt></ruby> <ruby>ℓ<rt>長度</rt></ruby> / <ruby>A<rt>截面積</rt></ruby></span><span class="f"><ruby>G<rt>電導</rt></ruby> = 1 / <ruby>R<rt>電阻</rt></ruby></span><span class="f"><ruby>σ<rt>電導係數</rt></ruby> = 1 / <ruby>ρ<rt>電阻係數</rt></ruby></span><span class="f"><ruby>A<rt>截面積</rt></ruby> = π <ruby>r<rt>半徑</rt></ruby>² = π <ruby>d<rt>直徑</rt></ruby>² / 4</span>
+    <span class="f"><span class="v"><span class="zh">電阻</span><span class="s">R</span><span class="u">Ω</span></span> = <span class="v"><span class="zh">電阻係數</span><span class="s">ρ</span><span class="u">Ω·m</span></span> <span class="v"><span class="zh">長度</span><span class="s">ℓ</span><span class="u">m</span></span> / <span class="v"><span class="zh">截面積</span><span class="s">A</span><span class="u">m²</span></span></span><span class="f"><span class="v"><span class="zh">電導</span><span class="s">G</span><span class="u">S</span></span> = 1 / <span class="v"><span class="zh">電阻</span><span class="s">R</span><span class="u">Ω</span></span></span><span class="f"><span class="v"><span class="zh">電導係數</span><span class="s">σ</span><span class="u">S/m</span></span> = 1 / <span class="v"><span class="zh">電阻係數</span><span class="s">ρ</span><span class="u">Ω·m</span></span></span><span class="f"><span class="v"><span class="zh">截面積</span><span class="s">A</span><span class="u">m²</span></span> = π <span class="v"><span class="zh">半徑</span><span class="s">r</span><span class="u">m</span></span>² = π <span class="v"><span class="zh">直徑</span><span class="s">d</span><span class="u">m</span></span>² / 4</span>
   </div>
   <div class="tbl"><table>
     <thead><tr><th>符號</th><th>名稱</th><th>單位</th></tr></thead>
@@ -344,9 +346,9 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
   <ul class="pts">
     <li>導電性好到差：<b>銀 &gt; 銅 &gt; 金 &gt; 鋁</b>（電阻係數：銀最小）。</li>
     <li>銅 ρ ≈ 1.72 × 10⁻⁸ Ω·m，最常用來做導線（便宜又導電好）。</li>
-    <li>英制：1 mil = 10⁻³ 吋；圓密爾 <span class="f"><ruby>A<rt>截面積(CM)</rt></ruby> = <ruby>d<rt>直徑(mil)</rt></ruby>²</span>。</li>
+    <li>英制：1 mil = 10⁻³ 吋；圓密爾 <span class="f"><span class="v"><span class="zh">截面積(CM)</span><span class="s">A</span><span class="u">CM</span></span> = <span class="v"><span class="zh">直徑(mil)</span><span class="s">d</span><span class="u">mil</span></span>²</span>。</li>
   </ul>
-  <div class="note ex"><b class="tag">例題</b><p>一條 4 Ω 導線均勻拉長為原來 3 倍：<span class="f"><ruby>R₂<rt>新電阻</rt></ruby> = <ruby>R₁<rt>原電阻</rt></ruby> × <ruby>n<rt>倍數</rt></ruby>² = 4 × 3²</span> = <b>36 Ω</b>。</p></div>
+  <div class="note ex"><b class="tag">例題</b><p>一條 4 Ω 導線均勻拉長為原來 3 倍：<span class="f"><span class="v"><span class="zh">新電阻</span><span class="s">R₂</span><span class="u">Ω</span></span> = <span class="v"><span class="zh">原電阻</span><span class="s">R₁</span><span class="u">Ω</span></span> × <span class="v"><span class="zh">倍數</span><span class="s">n</span><span class="u">&nbsp;</span></span>² = 4 × 3²</span> = <b>36 Ω</b>。</p></div>
 </section>
 
 <section class="sec" id="s2-2">
@@ -401,7 +403,7 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
 <section class="sec" id="s2-3">
   <h3><span class="id">2-3</span>歐姆定律</h3>
   <div class="formulas">
-    <span class="f"><ruby>V<rt>電壓</rt></ruby> = <ruby>I<rt>電流</rt></ruby> <ruby>R<rt>電阻</rt></ruby></span><span class="f"><ruby>I<rt>電流</rt></ruby> = <ruby>V<rt>電壓</rt></ruby> / <ruby>R<rt>電阻</rt></ruby></span><span class="f"><ruby>R<rt>電阻</rt></ruby> = <ruby>V<rt>電壓</rt></ruby> / <ruby>I<rt>電流</rt></ruby></span><span class="f"><ruby>I<rt>電流</rt></ruby> = <ruby>G<rt>電導</rt></ruby> <ruby>V<rt>電壓</rt></ruby></span>
+    <span class="f"><span class="v"><span class="zh">電壓</span><span class="s">V</span><span class="u">V</span></span> = <span class="v"><span class="zh">電流</span><span class="s">I</span><span class="u">A</span></span> <span class="v"><span class="zh">電阻</span><span class="s">R</span><span class="u">Ω</span></span></span><span class="f"><span class="v"><span class="zh">電流</span><span class="s">I</span><span class="u">A</span></span> = <span class="v"><span class="zh">電壓</span><span class="s">V</span><span class="u">V</span></span> / <span class="v"><span class="zh">電阻</span><span class="s">R</span><span class="u">Ω</span></span></span><span class="f"><span class="v"><span class="zh">電阻</span><span class="s">R</span><span class="u">Ω</span></span> = <span class="v"><span class="zh">電壓</span><span class="s">V</span><span class="u">V</span></span> / <span class="v"><span class="zh">電流</span><span class="s">I</span><span class="u">A</span></span></span><span class="f"><span class="v"><span class="zh">電流</span><span class="s">I</span><span class="u">A</span></span> = <span class="v"><span class="zh">電導</span><span class="s">G</span><span class="u">S</span></span> <span class="v"><span class="zh">電壓</span><span class="s">V</span><span class="u">V</span></span></span>
   </div>
   <ul class="pts">
     <li>溫度不變時，導體兩端電壓與電流<b>成正比</b>。</li>
@@ -409,13 +411,13 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
     <li>非線性元件（燈泡燈絲、二極體）不是直線。</li>
   </ul>
   <div class="note warn"><b class="tag">陷阱</b><p>看清楚圖的座標軸：橫軸是電流 I、縱軸是電壓 V 時，斜率才是電阻 R。</p></div>
-  <div class="note ex"><b class="tag">例題</b><p>10 Ω 電阻接 20 V：<span class="f"><ruby>I<rt>電流</rt></ruby> = <ruby>V<rt>電壓</rt></ruby> / <ruby>R<rt>電阻</rt></ruby> = 20 / 10</span> = 2 A，<span class="f"><ruby>P<rt>功率</rt></ruby> = <ruby>V<rt>電壓</rt></ruby> <ruby>I<rt>電流</rt></ruby> = 20 × 2</span> = 40 W。</p></div>
+  <div class="note ex"><b class="tag">例題</b><p>10 Ω 電阻接 20 V：<span class="f"><span class="v"><span class="zh">電流</span><span class="s">I</span><span class="u">A</span></span> = <span class="v"><span class="zh">電壓</span><span class="s">V</span><span class="u">V</span></span> / <span class="v"><span class="zh">電阻</span><span class="s">R</span><span class="u">Ω</span></span> = 20 / 10</span> = 2 A，<span class="f"><span class="v"><span class="zh">功率</span><span class="s">P</span><span class="u">W</span></span> = <span class="v"><span class="zh">電壓</span><span class="s">V</span><span class="u">V</span></span> <span class="v"><span class="zh">電流</span><span class="s">I</span><span class="u">A</span></span> = 20 × 2</span> = 40 W。</p></div>
 </section>
 
 <section class="sec" id="s2-4">
   <h3><span class="id">2-4</span>電阻溫度係數</h3>
   <div class="formulas">
-    <span class="f"><ruby>R₂<rt>新電阻</rt></ruby> = <ruby>R₁<rt>原電阻</rt></ruby> [1 + <ruby>α₁<rt>t₁時溫度係數</rt></ruby> (<ruby>t₂<rt>新溫度</rt></ruby> − <ruby>t₁<rt>原溫度</rt></ruby>)]</span><span class="f"><ruby>R₂<rt>新電阻</rt></ruby> / <ruby>R₁<rt>原電阻</rt></ruby> = (<ruby>T<rt>推算絕對溫度</rt></ruby> + <ruby>t₂<rt>新溫度</rt></ruby>) / (<ruby>T<rt>推算絕對溫度</rt></ruby> + <ruby>t₁<rt>原溫度</rt></ruby>)</span><span class="f"><ruby>αₜ<rt>t°C時溫度係數</rt></ruby> = 1 / (<ruby>T<rt>推算絕對溫度</rt></ruby> + <ruby>t<rt>溫度</rt></ruby>)</span>
+    <span class="f"><span class="v"><span class="zh">新電阻</span><span class="s">R₂</span><span class="u">Ω</span></span> = <span class="v"><span class="zh">原電阻</span><span class="s">R₁</span><span class="u">Ω</span></span> [1 + <span class="v"><span class="zh">t₁時溫度係數</span><span class="s">α₁</span><span class="u">1/°C</span></span> (<span class="v"><span class="zh">新溫度</span><span class="s">t₂</span><span class="u">°C</span></span> − <span class="v"><span class="zh">原溫度</span><span class="s">t₁</span><span class="u">°C</span></span>)]</span><span class="f"><span class="v"><span class="zh">新電阻</span><span class="s">R₂</span><span class="u">Ω</span></span> / <span class="v"><span class="zh">原電阻</span><span class="s">R₁</span><span class="u">Ω</span></span> = (<span class="v"><span class="zh">推算絕對溫度</span><span class="s">T</span><span class="u">°C</span></span> + <span class="v"><span class="zh">新溫度</span><span class="s">t₂</span><span class="u">°C</span></span>) / (<span class="v"><span class="zh">推算絕對溫度</span><span class="s">T</span><span class="u">°C</span></span> + <span class="v"><span class="zh">原溫度</span><span class="s">t₁</span><span class="u">°C</span></span>)</span><span class="f"><span class="v"><span class="zh">t°C時溫度係數</span><span class="s">αₜ</span><span class="u">1/°C</span></span> = 1 / (<span class="v"><span class="zh">推算絕對溫度</span><span class="s">T</span><span class="u">°C</span></span> + <span class="v"><span class="zh">溫度</span><span class="s">t</span><span class="u">°C</span></span>)</span>
   </div>
   <div class="tbl"><table>
     <thead><tr><th>類型</th><th>溫度升高時</th><th>材料</th></tr></thead>
@@ -428,12 +430,12 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
   <div class="tbl"><table>
     <thead><tr><th>材料</th><th>推算絕對溫度 T</th><th>常用 α</th></tr></thead>
     <tbody>
-      <tr><td>銅</td><td class="f">234.5 °C（即 −234.5 °C 時 R = 0）</td><td class="f"><ruby>α₀<rt>0°C溫度係數</rt></ruby> ≈ 0.00427、<ruby>α₂₀<rt>20°C溫度係數</rt></ruby> ≈ 0.00393</td></tr>
-      <tr><td>鋁</td><td class="f">236 °C</td><td class="f"><ruby>α₂₀<rt>20°C溫度係數</rt></ruby> ≈ 0.0039</td></tr>
+      <tr><td>銅</td><td class="f">234.5 °C（即 −234.5 °C 時 R = 0）</td><td class="f"><span class="v"><span class="zh">0°C溫度係數</span><span class="s">α₀</span><span class="u">1/°C</span></span> ≈ 0.00427、<span class="v"><span class="zh">20°C溫度係數</span><span class="s">α₂₀</span><span class="u">1/°C</span></span> ≈ 0.00393</td></tr>
+      <tr><td>鋁</td><td class="f">236 °C</td><td class="f"><span class="v"><span class="zh">20°C溫度係數</span><span class="s">α₂₀</span><span class="u">1/°C</span></span> ≈ 0.0039</td></tr>
     </tbody>
   </table></div>
   <div class="note warn"><b class="tag">陷阱</b><p>溫度係數 α 會隨參考溫度改變：α₁ 必須是 <b>原溫度 t₁ 時的係數</b>。溫度越高，α 越小。</p></div>
-  <div class="note ex"><b class="tag">例題</b><p>銅線 20 °C 時 10 Ω，求 70 °C 電阻：<span class="f"><ruby>R₂<rt>新電阻</rt></ruby> = <ruby>R₁<rt>原電阻</rt></ruby> × (<ruby>T<rt>推算溫度</rt></ruby> + <ruby>t₂<rt>新溫度</rt></ruby>) / (<ruby>T<rt>推算溫度</rt></ruby> + <ruby>t₁<rt>原溫度</rt></ruby>) = 10 × (234.5 + 70) / (234.5 + 20)</span> ≈ <b>11.96 Ω</b>。</p></div>
+  <div class="note ex"><b class="tag">例題</b><p>銅線 20 °C 時 10 Ω，求 70 °C 電阻：<span class="f"><span class="v"><span class="zh">新電阻</span><span class="s">R₂</span><span class="u">Ω</span></span> = <span class="v"><span class="zh">原電阻</span><span class="s">R₁</span><span class="u">Ω</span></span> × (<span class="v"><span class="zh">推算溫度</span><span class="s">T</span><span class="u">°C</span></span> + <span class="v"><span class="zh">新溫度</span><span class="s">t₂</span><span class="u">°C</span></span>) / (<span class="v"><span class="zh">推算溫度</span><span class="s">T</span><span class="u">°C</span></span> + <span class="v"><span class="zh">原溫度</span><span class="s">t₁</span><span class="u">°C</span></span>) = 10 × (234.5 + 70) / (234.5 + 20)</span> ≈ <b>11.96 Ω</b>。</p></div>
 </section>
 
 <!-- ========== 總表 ========== -->
@@ -442,16 +444,16 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
   <div class="tbl"><table>
     <thead><tr><th>物理量</th><th>符號／單位</th><th>公式</th></tr></thead>
     <tbody>
-      <tr><td>電荷</td><td>Q／C</td><td class="f"><ruby>Q<rt>電荷</rt></ruby> = <ruby>n<rt>電子數</rt></ruby> × 1.602×10⁻¹⁹、<ruby>Q<rt>電荷</rt></ruby> = <ruby>I<rt>電流</rt></ruby> <ruby>t<rt>時間</rt></ruby></td></tr>
-      <tr><td>電流</td><td>I／A</td><td class="f"><ruby>I<rt>電流</rt></ruby> = <ruby>Q<rt>電荷</rt></ruby> / <ruby>t<rt>時間</rt></ruby> = <ruby>V<rt>電壓</rt></ruby> / <ruby>R<rt>電阻</rt></ruby></td></tr>
-      <tr><td>電壓</td><td>V／V</td><td class="f"><ruby>V<rt>電壓</rt></ruby> = <ruby>W<rt>電能</rt></ruby> / <ruby>Q<rt>電荷</rt></ruby> = <ruby>I<rt>電流</rt></ruby> <ruby>R<rt>電阻</rt></ruby></td></tr>
-      <tr><td>電能</td><td>W／J</td><td class="f"><ruby>W<rt>電能</rt></ruby> = <ruby>V<rt>電壓</rt></ruby> <ruby>Q<rt>電荷</rt></ruby> = <ruby>P<rt>功率</rt></ruby> <ruby>t<rt>時間</rt></ruby>；1 度 = 3.6×10⁶ J</td></tr>
-      <tr><td>電功率</td><td>P／W</td><td class="f"><ruby>P<rt>功率</rt></ruby> = <ruby>V<rt>電壓</rt></ruby> <ruby>I<rt>電流</rt></ruby> = <ruby>I<rt>電流</rt></ruby>² <ruby>R<rt>電阻</rt></ruby> = <ruby>V<rt>電壓</rt></ruby>² / <ruby>R<rt>電阻</rt></ruby>；1 <ruby>hp<rt>馬力</rt></ruby> = 746 W</td></tr>
-      <tr><td>電阻</td><td>R／Ω</td><td class="f"><ruby>R<rt>電阻</rt></ruby> = <ruby>ρ<rt>電阻係數</rt></ruby> <ruby>ℓ<rt>長度</rt></ruby> / <ruby>A<rt>截面積</rt></ruby></td></tr>
-      <tr><td>電導</td><td>G／S</td><td class="f"><ruby>G<rt>電導</rt></ruby> = 1 / <ruby>R<rt>電阻</rt></ruby> = <ruby>σ<rt>電導係數</rt></ruby> <ruby>A<rt>截面積</rt></ruby> / <ruby>ℓ<rt>長度</rt></ruby></td></tr>
-      <tr><td>溫度對電阻</td><td>α／1/°C</td><td class="f"><ruby>R₂<rt>新電阻</rt></ruby> = <ruby>R₁<rt>原電阻</rt></ruby> [1 + <ruby>α₁<rt>溫度係數</rt></ruby> (<ruby>t₂<rt>新溫度</rt></ruby> − <ruby>t₁<rt>原溫度</rt></ruby>)]</td></tr>
-      <tr><td>庫侖定律</td><td>F／N</td><td class="f"><ruby>F<rt>靜電力</rt></ruby> = 9×10⁹ <ruby>Q₁<rt>電荷1</rt></ruby> <ruby>Q₂<rt>電荷2</rt></ruby> / <ruby>r<rt>距離</rt></ruby>²</td></tr>
-      <tr><td>效率</td><td>η／%</td><td class="f"><ruby>η<rt>效率</rt></ruby> = <ruby>P出<rt>輸出功率</rt></ruby> / <ruby>P入<rt>輸入功率</rt></ruby> × 100%</td></tr>
+      <tr><td>電荷</td><td>Q／C</td><td class="f"><span class="v"><span class="zh">電荷</span><span class="s">Q</span><span class="u">C</span></span> = <span class="v"><span class="zh">電子數</span><span class="s">n</span><span class="u">個</span></span> × 1.602×10⁻¹⁹、<span class="v"><span class="zh">電荷</span><span class="s">Q</span><span class="u">C</span></span> = <span class="v"><span class="zh">電流</span><span class="s">I</span><span class="u">A</span></span> <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span></td></tr>
+      <tr><td>電流</td><td>I／A</td><td class="f"><span class="v"><span class="zh">電流</span><span class="s">I</span><span class="u">A</span></span> = <span class="v"><span class="zh">電荷</span><span class="s">Q</span><span class="u">C</span></span> / <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span> = <span class="v"><span class="zh">電壓</span><span class="s">V</span><span class="u">V</span></span> / <span class="v"><span class="zh">電阻</span><span class="s">R</span><span class="u">Ω</span></span></td></tr>
+      <tr><td>電壓</td><td>V／V</td><td class="f"><span class="v"><span class="zh">電壓</span><span class="s">V</span><span class="u">V</span></span> = <span class="v"><span class="zh">電能</span><span class="s">W</span><span class="u">J</span></span> / <span class="v"><span class="zh">電荷</span><span class="s">Q</span><span class="u">C</span></span> = <span class="v"><span class="zh">電流</span><span class="s">I</span><span class="u">A</span></span> <span class="v"><span class="zh">電阻</span><span class="s">R</span><span class="u">Ω</span></span></td></tr>
+      <tr><td>電能</td><td>W／J</td><td class="f"><span class="v"><span class="zh">電能</span><span class="s">W</span><span class="u">J</span></span> = <span class="v"><span class="zh">電壓</span><span class="s">V</span><span class="u">V</span></span> <span class="v"><span class="zh">電荷</span><span class="s">Q</span><span class="u">C</span></span> = <span class="v"><span class="zh">功率</span><span class="s">P</span><span class="u">W</span></span> <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span>；1 度 = 3.6×10⁶ J</td></tr>
+      <tr><td>電功率</td><td>P／W</td><td class="f"><span class="v"><span class="zh">功率</span><span class="s">P</span><span class="u">W</span></span> = <span class="v"><span class="zh">電壓</span><span class="s">V</span><span class="u">V</span></span> <span class="v"><span class="zh">電流</span><span class="s">I</span><span class="u">A</span></span> = <span class="v"><span class="zh">電流</span><span class="s">I</span><span class="u">A</span></span>² <span class="v"><span class="zh">電阻</span><span class="s">R</span><span class="u">Ω</span></span> = <span class="v"><span class="zh">電壓</span><span class="s">V</span><span class="u">V</span></span>² / <span class="v"><span class="zh">電阻</span><span class="s">R</span><span class="u">Ω</span></span>；1 <span class="v"><span class="zh">馬力</span><span class="s">hp</span><span class="u">&nbsp;</span></span> = 746 W</td></tr>
+      <tr><td>電阻</td><td>R／Ω</td><td class="f"><span class="v"><span class="zh">電阻</span><span class="s">R</span><span class="u">Ω</span></span> = <span class="v"><span class="zh">電阻係數</span><span class="s">ρ</span><span class="u">Ω·m</span></span> <span class="v"><span class="zh">長度</span><span class="s">ℓ</span><span class="u">m</span></span> / <span class="v"><span class="zh">截面積</span><span class="s">A</span><span class="u">m²</span></span></td></tr>
+      <tr><td>電導</td><td>G／S</td><td class="f"><span class="v"><span class="zh">電導</span><span class="s">G</span><span class="u">S</span></span> = 1 / <span class="v"><span class="zh">電阻</span><span class="s">R</span><span class="u">Ω</span></span> = <span class="v"><span class="zh">電導係數</span><span class="s">σ</span><span class="u">S/m</span></span> <span class="v"><span class="zh">截面積</span><span class="s">A</span><span class="u">m²</span></span> / <span class="v"><span class="zh">長度</span><span class="s">ℓ</span><span class="u">m</span></span></td></tr>
+      <tr><td>溫度對電阻</td><td>α／1/°C</td><td class="f"><span class="v"><span class="zh">新電阻</span><span class="s">R₂</span><span class="u">Ω</span></span> = <span class="v"><span class="zh">原電阻</span><span class="s">R₁</span><span class="u">Ω</span></span> [1 + <span class="v"><span class="zh">溫度係數</span><span class="s">α₁</span><span class="u">1/°C</span></span> (<span class="v"><span class="zh">新溫度</span><span class="s">t₂</span><span class="u">°C</span></span> − <span class="v"><span class="zh">原溫度</span><span class="s">t₁</span><span class="u">°C</span></span>)]</td></tr>
+      <tr><td>庫侖定律</td><td>F／N</td><td class="f"><span class="v"><span class="zh">靜電力</span><span class="s">F</span><span class="u">N</span></span> = 9×10⁹ <span class="v"><span class="zh">電荷1</span><span class="s">Q₁</span><span class="u">C</span></span> <span class="v"><span class="zh">電荷2</span><span class="s">Q₂</span><span class="u">C</span></span> / <span class="v"><span class="zh">距離</span><span class="s">r</span><span class="u">m</span></span>²</td></tr>
+      <tr><td>效率</td><td>η／%</td><td class="f"><span class="v"><span class="zh">效率</span><span class="s">η</span><span class="u">%</span></span> = <span class="v"><span class="zh">輸出功率</span><span class="s">P出</span><span class="u">W</span></span> / <span class="v"><span class="zh">輸入功率</span><span class="s">P入</span><span class="u">W</span></span> × 100%</td></tr>
     </tbody>
   </table></div>
 </section>
