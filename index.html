@@ -136,6 +136,23 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
 .utag { font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--teal); background: var(--teal-soft); border-radius: 6px; padding: 1px 7px; white-space: nowrap; }
 .sumtbl td { vertical-align: middle; }
 .sumtbl td:nth-child(2) { white-space: nowrap; font-weight: 700; }
+
+.keygrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+.keycard { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: grid; gap: 8px; align-content: start; min-width: 0; break-inside: avoid; }
+.keycard p { margin: 0; font-size: 15px; }
+.keyhead { display: flex; align-items: center; gap: 8px; font-size: 17px; }
+.keyno { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--teal); color: var(--paper); font-family: var(--mono); font-size: 14px; font-weight: 700; flex: none; }
+.keyhead .utag { margin-left: auto; }
+.keybody { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; background: var(--teal-soft); border-radius: 10px; padding: 10px 12px; }
+.keyf { font-size: 18px; line-height: 2; }
+.kl { display: inline-block; font-size: 12px; letter-spacing: .06em; color: var(--teal); margin-right: 8px; }
+.kex { background: var(--bg); border: 1px dashed var(--line); border-radius: 8px; padding: 6px 10px; }
+svg.tri { width: 120px; height: auto; flex: none; }
+.tri-shape { fill: var(--paper); stroke: var(--teal); stroke-width: 3; }
+.tri-line { stroke: var(--teal); stroke-width: 2; fill: none; }
+svg.tri .tl { fill: var(--fg); font-family: var(--mono); font-size: 28px; font-weight: 700; text-anchor: middle; }
+svg.tri .tz { fill: var(--teal); font-family: var(--sans); font-size: 12px; font-weight: 700; text-anchor: middle; }
+@media print { #key { break-before: page; } }
 </style>
 <style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -150,7 +167,7 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
   <nav class="toc" aria-label="目錄">
     <a class="c1" href="#s1-1">1-1 特性應用</a><a class="c1" href="#s1-2">1-2 單位</a><a class="c1" href="#s1-3">1-3 電能</a><a class="c1" href="#s1-4">1-4 電荷</a><a class="c1" href="#s1-5">1-5 電壓</a><a class="c1" href="#s1-6">1-6 電流</a><a class="c1" href="#s1-7">1-7 電功率</a>
     <a class="c2" href="#s2-1">2-1 電阻電導</a><a class="c2" href="#s2-2">2-2 電阻器</a><a class="c2" href="#s2-3">2-3 歐姆定律</a><a class="c2" href="#s2-4">2-4 溫度係數</a>
-    <a href="#sum">公式總表</a>
+    <a href="#sum">公式總表</a><a href="#key">必背公式</a>
   </nav>
 </header>
 
@@ -523,6 +540,137 @@ footer { color: var(--muted); font-size: 13px; text-align: center; }
       <tr><td><span class="utag">2-4</span></td><td>電阻比</td><td class="f"><span class="frac"><span class="num"><span class="v"><span class="zh">新電阻</span><span class="s">R₂</span><span class="u">Ω</span></span></span><span class="den"><span class="v"><span class="zh">原電阻</span><span class="s">R₁</span><span class="u">Ω</span></span></span></span> = <span class="frac"><span class="num"><span class="frac"><span class="num">1</span><span class="den"><span class="v"><span class="zh">0°C溫度係數</span><span class="s">α₀</span><span class="u">1/°C</span></span></span></span> + <span class="v"><span class="zh">新溫度</span><span class="s">T₂</span><span class="u">°C</span></span></span><span class="den"><span class="frac"><span class="num">1</span><span class="den"><span class="v"><span class="zh">0°C溫度係數</span><span class="s">α₀</span><span class="u">1/°C</span></span></span></span> + <span class="v"><span class="zh">原溫度</span><span class="s">T₁</span><span class="u">°C</span></span></span></span></td></tr>
     </tbody>
   </table></div>
+</section>
+
+<section class="sec" id="key">
+  <h3><span class="id">必背</span>最重要的 10 個公式</h3>
+  <p style="margin:0">背不起來就先背這一頁。前 4 個都用<b>三角形</b>記：<b>上面 = 下面兩個相乘</b>；<b>下面的 = 上面 ÷ 另一個</b>。</p>
+  <div class="keygrid">
+  <article class="keycard">
+    <div class="keyhead"><span class="keyno">1</span><b>歐姆定律</b><span class="utag">2-3</span></div>
+    <div class="keybody">
+      <svg class="tri" viewBox="0 0 200 170" role="img" aria-label="V 在上，I 和 R 在下">
+  <path class="tri-shape" d="M100 8 L8 162 L192 162 Z"/>
+  <path class="tri-line" d="M51 96 H149 M100 96 V162"/>
+  <text class="tl" x="100" y="66">V</text><text class="tz" x="100" y="86">電壓</text>
+  <text class="tl" x="66" y="130">I</text><text class="tz" x="66" y="150">電流</text>
+  <text class="tl" x="134" y="130">R</text><text class="tz" x="134" y="150">電阻</text>
+</svg>
+      <div class="keyf f"><span class="v"><span class="zh">電壓</span><span class="s">V</span><span class="u">V</span></span> = <span class="v"><span class="zh">電流</span><span class="s">I</span><span class="u">A</span></span> × <span class="v"><span class="zh">電阻</span><span class="s">R</span><span class="u">Ω</span></span></div>
+    </div>
+    <p><b class="kl">怎麼記</b>三角形：<b>V 在上面，I、R 在下面</b>。用手遮住要求的那個：遮 V → I × R；遮 I → <span class="frac"><span class="num">V</span><span class="den">R</span></span>；遮 R → <span class="frac"><span class="num">V</span><span class="den">I</span></span>。</p>
+    <p><b class="kl">什麼時候用</b>題目給了電壓、電流、電阻其中兩個，求第三個。</p>
+    <p class="kex"><b class="kl">例題</b>12 V 接 4 Ω：I = <span class="frac"><span class="num">12</span><span class="den">4</span></span> = <b>3 A</b>。</p>
+  </article>
+  <article class="keycard">
+    <div class="keyhead"><span class="keyno">2</span><b>電功率</b><span class="utag">1-7</span></div>
+    <div class="keybody">
+      <svg class="tri" viewBox="0 0 200 170" role="img" aria-label="P 在上，V 和 I 在下">
+  <path class="tri-shape" d="M100 8 L8 162 L192 162 Z"/>
+  <path class="tri-line" d="M51 96 H149 M100 96 V162"/>
+  <text class="tl" x="100" y="66">P</text><text class="tz" x="100" y="86">功率</text>
+  <text class="tl" x="66" y="130">V</text><text class="tz" x="66" y="150">電壓</text>
+  <text class="tl" x="134" y="130">I</text><text class="tz" x="134" y="150">電流</text>
+</svg>
+      <div class="keyf f"><span class="v"><span class="zh">功率</span><span class="s">P</span><span class="u">W</span></span> = <span class="v"><span class="zh">電壓</span><span class="s">V</span><span class="u">V</span></span> × <span class="v"><span class="zh">電流</span><span class="s">I</span><span class="u">A</span></span></div>
+    </div>
+    <p><b class="kl">怎麼記</b>三角形：<b>P 在上面，V、I 在下面</b>。再背兩個變身：知道 I 和 R → P = I² × R；知道 V 和 R → P = <span class="frac"><span class="num">V²</span><span class="den">R</span></span>。</p>
+    <p><b class="kl">什麼時候用</b>題目問「功率」「幾瓦」「W」。</p>
+    <p class="kex"><b class="kl">例題</b>110 V、2 A：P = 110 × 2 = <b>220 W</b>。</p>
+  </article>
+  <article class="keycard">
+    <div class="keyhead"><span class="keyno">3</span><b>電能</b><span class="utag">1-3</span></div>
+    <div class="keybody">
+      <svg class="tri" viewBox="0 0 200 170" role="img" aria-label="W 在上，P 和 t 在下">
+  <path class="tri-shape" d="M100 8 L8 162 L192 162 Z"/>
+  <path class="tri-line" d="M51 96 H149 M100 96 V162"/>
+  <text class="tl" x="100" y="66">W</text><text class="tz" x="100" y="86">電能</text>
+  <text class="tl" x="66" y="130">P</text><text class="tz" x="66" y="150">功率</text>
+  <text class="tl" x="134" y="130">t</text><text class="tz" x="134" y="150">時間</text>
+</svg>
+      <div class="keyf f"><span class="v"><span class="zh">電能</span><span class="s">W</span><span class="u">J</span></span> = <span class="v"><span class="zh">功率</span><span class="s">P</span><span class="u">W</span></span> × <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span></div>
+    </div>
+    <p><b class="kl">怎麼記</b>三角形：<b>W 在上面，P、t 在下面</b>。算電費用：<b>度 = kW × 小時</b>。</p>
+    <p><b class="kl">什麼時候用</b>題目問「用了多少電」「幾度」「幾焦耳」。</p>
+    <p class="kex"><b class="kl">例題</b>1000 W 用 5 小時：W = 1 kW × 5 h = <b>5 度</b>。</p>
+  </article>
+  <article class="keycard">
+    <div class="keyhead"><span class="keyno">4</span><b>電量（電荷）</b><span class="utag">1-6</span></div>
+    <div class="keybody">
+      <svg class="tri" viewBox="0 0 200 170" role="img" aria-label="Q 在上，I 和 t 在下">
+  <path class="tri-shape" d="M100 8 L8 162 L192 162 Z"/>
+  <path class="tri-line" d="M51 96 H149 M100 96 V162"/>
+  <text class="tl" x="100" y="66">Q</text><text class="tz" x="100" y="86">電荷</text>
+  <text class="tl" x="66" y="130">I</text><text class="tz" x="66" y="150">電流</text>
+  <text class="tl" x="134" y="130">t</text><text class="tz" x="134" y="150">時間</text>
+</svg>
+      <div class="keyf f"><span class="v"><span class="zh">電荷</span><span class="s">Q</span><span class="u">C</span></span> = <span class="v"><span class="zh">電流</span><span class="s">I</span><span class="u">A</span></span> × <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span></div>
+    </div>
+    <p><b class="kl">怎麼記</b>三角形：<b>Q 在上面，I、t 在下面</b>。電流就是「每秒流過多少電荷」，所以 I = <span class="frac"><span class="num">Q</span><span class="den">t</span></span>。</p>
+    <p><b class="kl">什麼時候用</b>題目問「通過多少庫侖」或給庫侖求電流。</p>
+    <p class="kex"><b class="kl">例題</b>2 A 流 10 秒：Q = 2 × 10 = <b>20 C</b>。</p>
+  </article>
+  <article class="keycard">
+    <div class="keyhead"><span class="keyno">5</span><b>電壓</b><span class="utag">1-5</span></div>
+    <div class="keybody">
+      
+      <div class="keyf f"><span class="v"><span class="zh">電壓</span><span class="s">V</span><span class="u">V</span></span> = <span class="frac"><span class="num"><span class="v"><span class="zh">電能</span><span class="s">W</span><span class="u">J</span></span></span><span class="den"><span class="v"><span class="zh">電荷</span><span class="s">Q</span><span class="u">C</span></span></span></span></div>
+    </div>
+    <p><b class="kl">怎麼記</b>電壓 = 每 1 庫侖電荷得到的能量，所以是<b>能量 ÷ 電荷</b>。</p>
+    <p><b class="kl">什麼時候用</b>題目給「做功幾焦耳」「移動幾庫侖」，求電壓。</p>
+    <p class="kex"><b class="kl">例題</b>移動 5 C 做功 30 J：V = <span class="frac"><span class="num">30</span><span class="den">5</span></span> = <b>6 V</b>。</p>
+  </article>
+  <article class="keycard">
+    <div class="keyhead"><span class="keyno">6</span><b>電阻定律</b><span class="utag">2-1</span></div>
+    <div class="keybody">
+      
+      <div class="keyf f"><span class="v"><span class="zh">電阻</span><span class="s">R</span><span class="u">Ω</span></span> = <span class="v"><span class="zh">電阻係數</span><span class="s">ρ</span><span class="u">Ω·m</span></span> × <span class="frac"><span class="num"><span class="v"><span class="zh">長度</span><span class="s">ℓ</span><span class="u">m</span></span></span><span class="den"><span class="v"><span class="zh">截面積</span><span class="s">A</span><span class="u">m²</span></span></span></span></div>
+    </div>
+    <p><b class="kl">怎麼記</b><b>越長電阻越大（長度在上面），越粗電阻越小（截面積在下面）</b>。導線拉長成 n 倍 → 電阻變 <b>n²</b> 倍。</p>
+    <p><b class="kl">什麼時候用</b>題目講導線的長度、粗細、材料，或把導線拉長。</p>
+    <p class="kex"><b class="kl">例題</b>4 Ω 導線拉長成 2 倍：R = 4 × 2² = <b>16 Ω</b>。</p>
+  </article>
+  <article class="keycard">
+    <div class="keyhead"><span class="keyno">7</span><b>電導</b><span class="utag">2-1</span></div>
+    <div class="keybody">
+      
+      <div class="keyf f"><span class="v"><span class="zh">電導</span><span class="s">G</span><span class="u">S</span></span> = <span class="frac"><span class="num">1</span><span class="den"><span class="v"><span class="zh">電阻</span><span class="s">R</span><span class="u">Ω</span></span></span></span></div>
+    </div>
+    <p><b class="kl">怎麼記</b>電導就是<b>電阻的倒數</b>，電阻越大越難導電，電導越小。單位西門子 S。</p>
+    <p><b class="kl">什麼時候用</b>題目問「電導」或給 S 求電阻。</p>
+    <p class="kex"><b class="kl">例題</b>5 Ω：G = <span class="frac"><span class="num">1</span><span class="den">5</span></span> = <b>0.2 S</b>。</p>
+  </article>
+  <article class="keycard">
+    <div class="keyhead"><span class="keyno">8</span><b>焦耳定律（熱量）</b><span class="utag">2-3</span></div>
+    <div class="keybody">
+      
+      <div class="keyf f"><span class="v"><span class="zh">熱量</span><span class="s">H</span><span class="u">cal</span></span> = 0.24 × <span class="v"><span class="zh">電流</span><span class="s">I</span><span class="u">A</span></span>² × <span class="v"><span class="zh">電阻</span><span class="s">R</span><span class="u">Ω</span></span> × <span class="v"><span class="zh">時間</span><span class="s">t</span><span class="u">s</span></span></div>
+    </div>
+    <p><b class="kl">怎麼記</b>先算電能 <b>W = I² × R × t</b>（焦耳），要換成「卡」再<b>乘 0.24</b>。</p>
+    <p><b class="kl">什麼時候用</b>題目問「產生多少熱」「幾卡」。</p>
+    <p class="kex"><b class="kl">例題</b>2 A、10 Ω、10 秒：H = 0.24 × 2² × 10 × 10 = <b>96 卡</b>。</p>
+  </article>
+  <article class="keycard">
+    <div class="keyhead"><span class="keyno">9</span><b>溫度係數（銅）</b><span class="utag">2-4</span></div>
+    <div class="keybody">
+      
+      <div class="keyf f"><span class="frac"><span class="num"><span class="v"><span class="zh">新電阻</span><span class="s">R₂</span><span class="u">Ω</span></span></span><span class="den"><span class="v"><span class="zh">原電阻</span><span class="s">R₁</span><span class="u">Ω</span></span></span></span> = <span class="frac"><span class="num">234.5 + <span class="v"><span class="zh">新溫度</span><span class="s">T₂</span><span class="u">°C</span></span></span><span class="den">234.5 + <span class="v"><span class="zh">原溫度</span><span class="s">T₁</span><span class="u">°C</span></span></span></span></div>
+    </div>
+    <p><b class="kl">怎麼記</b>銅線直接用 <b>234.5</b>：新的放上面、原來的放下面，兩邊都一樣排。</p>
+    <p><b class="kl">什麼時候用</b>題目說「銅線」從某溫度變到另一個溫度，求新電阻。</p>
+    <p class="kex"><b class="kl">例題</b>銅線 20 °C 時 10 Ω，70 °C 時：R₂ = 10 × <span class="frac"><span class="num">234.5 + 70</span><span class="den">234.5 + 20</span></span> ≈ <b>11.96 Ω</b>。</p>
+  </article>
+  <article class="keycard">
+    <div class="keyhead"><span class="keyno">10</span><b>效率</b><span class="utag">1-3</span></div>
+    <div class="keybody">
+      
+      <div class="keyf f"><span class="v"><span class="zh">效率</span><span class="s">η</span><span class="u">%</span></span> = <span class="frac"><span class="num"><span class="v"><span class="zh">輸出</span><span class="s">P出</span><span class="u">W</span></span></span><span class="den"><span class="v"><span class="zh">輸入</span><span class="s">P入</span><span class="u">W</span></span></span></span> × 100%</div>
+    </div>
+    <p><b class="kl">怎麼記</b><b>輸出放上面、輸入放下面</b>，答案一定小於 100%。</p>
+    <p><b class="kl">什麼時候用</b>題目問「效率」或給「輸入功率、輸出功率」。</p>
+    <p class="kex"><b class="kl">例題</b>輸入 500 W、輸出 400 W：η = <span class="frac"><span class="num">400</span><span class="den">500</span></span> × 100% = <b>80%</b>。</p>
+  </article>
+  </div>
 </section>
 
 <footer>依課本目錄 1-1～2-4 與本章摘要整理。數值以課本為準，若與老師上課有出入，以老師為主。</footer>
