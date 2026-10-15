@@ -26,10 +26,6 @@
   --sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --bg: #0f1719; --paper: #162124; --grid: #1b282b; --fg: #e3eced; --muted: #93a6ab; --line: #2a3a3e;
-  --teal: #4fc1cf; --teal-soft: #173338; --ch1: #f0a53a; --ch2: #74c75f; --ch3: #b79cf5; --ch4: #ff8a73; --ch5: #7fb0ff; --ch6: #f19bd9; --warn: #ff8a73; --warn-soft: #3a211c; --hl: #4a4115;
-  color-scheme: dark } }
 :root[data-theme="dark"] {
   --bg: #0f1719; --paper: #162124; --grid: #1b282b; --fg: #e3eced; --muted: #93a6ab; --line: #2a3a3e;
   --teal: #4fc1cf; --teal-soft: #173338; --ch1: #f0a53a; --ch2: #74c75f; --ch3: #b79cf5; --ch4: #ff8a73; --ch5: #7fb0ff; --ch6: #f19bd9; --warn: #ff8a73; --warn-soft: #3a211c; --hl: #4a4115;
@@ -1177,7 +1173,7 @@ body { touch-action: manipulation; }
   var KEY = "study-theme", root = document.documentElement, btn = document.getElementById("themeBtn");
   var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
   try { var saved = localStorage.getItem(KEY); if (saved === "dark" || saved === "light") root.setAttribute("data-theme", saved); } catch (e) {}
-  function current() { var t = root.getAttribute("data-theme"); return t || (mq && mq.matches ? "dark" : "light"); }
+  function current() { var t = root.getAttribute("data-theme"); return t || "light"; }
   function label() {
     var dark = current() === "dark";
     btn.innerHTML = dark ? "<span aria-hidden=\"true\">☀</span> 切換淺色模式" : "<span aria-hidden=\"true\">☾</span> 切換深色模式";
