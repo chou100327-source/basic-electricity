@@ -1,4 +1,4 @@
-# 基本電學上學期 重點整理（高職一年級）
+# 基本電學上學期重點整理（高職一年級）
 
 Basic Electricity study notes for Taiwanese vocational high school students (高職 / 技高).
 
